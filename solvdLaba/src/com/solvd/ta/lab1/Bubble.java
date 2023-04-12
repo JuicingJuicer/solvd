@@ -21,9 +21,9 @@ public class Bubble {
     }
     public static void main(String[] args) {
         int nums[] = {10, 5, 1, 2, 7};
-        Bubble bb = new Bubble();
-        bb.printArr(nums);
-        bb.bubbleSort(nums);
-        bb.printArr(nums);
+        Bubble sorter = new Bubble();
+        sorter.printArr(nums);
+        sorter.bubbleSort(nums);
+        sorter.printArr(nums);
     }
 }
