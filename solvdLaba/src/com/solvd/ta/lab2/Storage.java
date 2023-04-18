@@ -4,7 +4,16 @@ import java.util.ArrayList;
 import java.util.EnumSet;
 
 public class Storage {
-	ArrayList<Media> arr = new ArrayList<Media>();
+	protected ArrayList<Media> arr = new ArrayList<Media>();
+	protected int capacity;
+
+	public Storage(int capacity) {
+		this.capacity = capacity;
+	}
+
+	public Storage() {
+		this.capacity = 100;
+	}
 
 	public void addMedia(Media media) {
 		arr.add(media);
