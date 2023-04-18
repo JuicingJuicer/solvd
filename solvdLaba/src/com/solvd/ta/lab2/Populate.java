@@ -11,7 +11,7 @@ public class Populate {
 		addBooks(dune);
 		if (arr.get(0) instanceof Book) {
 			Book book = (Book) arr.get(0);
-			book.printDetails();
+			// book.printDetails();
 		}
 	}
 

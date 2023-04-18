@@ -28,18 +28,15 @@ public class Book extends Media {
 		return this.pages;
 	}
 
-	public void printDetails() {
-		System.out.println("Title: " + this.getTitle());
-		System.out.println("Author: " + this.getAuthor());
-		System.out.println("Published: " + this.getYear());
-		System.out.println("Genre(s): " + this.getGenre());
-		System.out.println("Pages: " + this.getPages());
+	@Override
+	public String toString() {
+		return "Title: " + this.title + "\nAuthor: " + this.author + "\nPublished: " + this.year + "\nGenre(s): "
+				+ this.genre + "\nPages: " + this.pages;
 	}
 
 	public static void main(String[] args) {
-		Book dune = new Book("Dune", 1965, EnumSet.of(Genre.SCIFI), "Frank Herbert", 896);
-		dune.printDetails();
-
+		Book dune = new Book("Dune", 1965, EnumSet.of(Genre.SCIFI, Genre.FANTASY), "Frank Herbert", 896);
+		System.out.println(dune);
 	}
 
 }

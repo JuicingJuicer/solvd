@@ -25,8 +25,12 @@ public class Library {
 		return this.city;
 	}
 
+	public void greetings() {
+		System.out.println("Hi welcome to " + this.name + " of " + this.city + "!");
+	}
+
 	public static void main(String[] args) {
 		Library library = new Library("Juice Library", "Stockton");
-		System.out.println("Hi welcome to " + library.getName() + " of " + library.getCity() + "!");
+		library.greetings();
 	}
 }

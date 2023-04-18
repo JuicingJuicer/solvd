@@ -38,4 +38,15 @@ public class Movie extends Media {
 		return rating;
 	}
 
+	@Override
+	public String toString() {
+		return "Title: " + this.title + "\nDirector: " + this.director + "\nYear Released: " + this.year + "\nGenre: "
+				+ this.genre + "\nRuntime: " + this.runtime + " minutes" + "\nIMDb Rating: " + this.rating;
+	}
+
+	public static void main(String[] args) {
+		Movie batman = new Movie("The Dark Knight", 2008, EnumSet.of(Genre.ACTION, Genre.THRILLER), "Christopher Nolan",
+				152, 9.0);
+		System.out.println(batman);
+	}
 }
