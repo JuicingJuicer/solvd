@@ -40,8 +40,8 @@ public class Movie extends Media {
 
 	@Override
 	public String toString() {
-		return "Title: " + this.title + "\nDirector: " + this.director + "\nYear Released: " + this.year + "\nGenre: "
-				+ this.genre + "\nRuntime: " + this.runtime + " minutes" + "\nIMDb Rating: " + this.rating;
+		return "Title: " + title + "\nDirector: " + director + "\nYear Released: " + year + "\nGenre: " + genre
+				+ "\nRuntime: " + runtime + " minutes" + "\nIMDb Rating: " + rating;
 	}
 
 	public static void main(String[] args) {
