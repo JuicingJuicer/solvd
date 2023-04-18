@@ -5,7 +5,7 @@ public class Librarian {
 	private boolean isRegistered = false;
 
 	public Librarian(String name) {
-		this.name = name;
+		this.setName(name);
 	}
 
 	public void setName(String name) {
@@ -25,10 +25,25 @@ public class Librarian {
 	}
 
 	public void greet() {
-		System.out.println("Hi I'm " + this.name + " , I'm the librarian. How can I help you?");
+		System.out.println("Hi I'm " + this.name + ", I'm the librarian. How can I help you?");
+		printMenu();
 	}
 
 	public void denied() {
 		System.out.println("You must register before you can proceed with this action!");
+	}
+
+	public void printMenu() {
+		System.out.println("Enter a number");
+		System.out.println("1. Register");
+		System.out.println("2. ");
+		System.out.println("3. ");
+		System.out.println("4. ");
+		System.out.println("5. ");
+	}
+
+	public static void main(String[] args) {
+		Librarian librarian = new Librarian("Jason");
+		librarian.greet();
 	}
 }

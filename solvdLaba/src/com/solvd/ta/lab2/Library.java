@@ -5,8 +5,8 @@ public class Library {
 	private String city;
 
 	public Library(String name, String city) {
-		this.name = name;
-		this.city = city;
+		this.setName(name);
+		this.setCity(city);
 	}
 
 	public void setName(String name) {
