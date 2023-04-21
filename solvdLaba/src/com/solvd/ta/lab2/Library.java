@@ -26,6 +26,6 @@ public class Library {
 	}
 
 	public void greetings() {
-		System.out.println("Hi welcome to " + this.name + " of " + this.city + "!");
+		System.out.println("Welcome to " + this.name + " of " + this.city + "!");
 	}
 }

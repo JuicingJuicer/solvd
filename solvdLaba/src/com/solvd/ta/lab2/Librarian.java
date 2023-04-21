@@ -26,7 +26,6 @@ public class Librarian {
 
 	public void greet() {
 		System.out.println("Hi I'm " + this.name + ", I'm the librarian. How can I help you?");
-		printMenu();
 	}
 
 	public void denied() {
@@ -35,11 +34,12 @@ public class Librarian {
 
 	public void printMenu() {
 		System.out.println("Enter a number");
-		System.out.println("1. Register");
-		System.out.println("2. ");
-		System.out.println("3. ");
-		System.out.println("4. ");
-		System.out.println("5. ");
+		System.out.println("1. View Collection");
+		System.out.println("2. Register");
+		System.out.println("3. Set preferences");
+		System.out.println("4. Still deciding");
+		System.out.println("5. Still deciding");
+		System.out.println("6. Exit");
 	}
 
 	public static void main(String[] args) {

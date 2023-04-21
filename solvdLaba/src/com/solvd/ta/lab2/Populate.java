@@ -46,6 +46,13 @@ public class Populate {
 		this.generateManga();
 	}
 
+	public void printInventory() {
+		for (int i = 0; i < arr.size(); i++) {
+			System.out.println(arr.get(i));
+			System.out.println();
+		}
+	}
+
 	public static void main(String[] args) {
 		Populate pop = new Populate();
 		pop.generateItems();

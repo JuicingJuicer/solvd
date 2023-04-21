@@ -25,9 +25,9 @@ public class Storage {
 
 	public void printInventory() {
 		for (int i = 0; i < arr.size(); i++) {
-			System.out.println(arr.get(i));
-			System.out.println();
+			System.out.println(arr.get(i).title);
 		}
+		System.out.println();
 	}
 
 	public void cloneItems(ArrayList<Media> arr) {
