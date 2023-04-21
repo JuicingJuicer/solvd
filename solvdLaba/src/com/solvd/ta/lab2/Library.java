@@ -28,9 +28,4 @@ public class Library {
 	public void greetings() {
 		System.out.println("Hi welcome to " + this.name + " of " + this.city + "!");
 	}
-
-	public static void main(String[] args) {
-		Library library = new Library("Juice Library", "Stockton");
-		library.greetings();
-	}
 }
