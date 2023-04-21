@@ -1,6 +1,7 @@
 package com.solvd.ta.lab2;
 
 import java.util.EnumSet;
+import java.util.Objects;
 
 public class Manga extends Book {
 	private String demographic;
@@ -56,9 +57,43 @@ public class Manga extends Book {
 				+ pages;
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (null == o) {
+			return false;
+		}
+		if (this == o) {
+			return true;
+		}
+		if (getClass() != o.getClass()) {
+			return false;
+		}
+
+		Manga m = (Manga) o;
+		return (title.equals(m.title) && year == m.year && genre.equals(m.genre) && author.equals(m.author)
+				&& pages == m.pages && demographic.equals(m.demographic) && volume == m.volume
+				&& startChap == m.startChap && endChap == m.endChap);
+	}
+
+	@Override
+	public int hashCode() {
+		int hash = Objects.hash(title, author, demographic);
+		hash = 31 * hash + year;
+		hash = 31 * hash + pages;
+		hash = 31 * hash + volume;
+		hash = 31 * hash + startChap;
+		hash = 31 * hash + endChap;
+		hash = 31 * hash + genre.hashCode();
+		return hash;
+	}
+
 	public static void main(String[] args) {
 		Manga demon = new Manga("Demon Slayer: Kimetsu no Yaiba", 2018, EnumSet.of(Genre.ADVENTURE), "Koyoharu Gotouge",
 				192, "Shonen", 1, 1, 7);
-		System.out.println(demon);
+		Manga demon2 = new Manga("Demon Slayer: Kimetsu no Yaiba", 2018, EnumSet.of(Genre.ADVENTURE),
+				"Koyoharu Gotouge", 192, "Shonen", 1, 1, 7);
+		System.out.println("Equals? " + demon.equals(demon2));
+		System.out.println("hash: " + demon.hashCode());
+		System.out.println("hash: " + demon2.hashCode());
 	}
 }
