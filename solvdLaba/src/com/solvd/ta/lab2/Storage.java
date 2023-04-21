@@ -30,6 +30,10 @@ public class Storage {
 		}
 	}
 
+	public void cloneItems(ArrayList<Media> arr) {
+		this.arr = (ArrayList<Media>) arr.clone();
+	}
+
 	public static void main(String[] args) {
 		Storage storage = new Storage();
 		Book dune = new Book("Dune", 1965, EnumSet.of(Genre.SCIFI, Genre.FANTASY), "Frank Herbert", 896);
