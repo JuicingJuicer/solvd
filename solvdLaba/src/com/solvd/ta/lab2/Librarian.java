@@ -1,8 +1,10 @@
 package com.solvd.ta.lab2;
 
+import java.util.Scanner;
+
 public class Librarian {
+	Scanner sc = new Scanner(System.in);
 	private String name;
-	private boolean isRegistered = false;
 
 	public Librarian(String name) {
 		this.setName(name);
@@ -12,16 +14,8 @@ public class Librarian {
 		this.name = name;
 	}
 
-	public void setIsRegistered(boolean isRegistered) {
-		this.isRegistered = isRegistered;
-	}
-
 	public String getName() {
 		return this.name;
-	}
-
-	public boolean getIsRegistered() {
-		return this.isRegistered;
 	}
 
 	public void greet() {
@@ -42,8 +36,16 @@ public class Librarian {
 		System.out.println("6. Exit");
 	}
 
-	public static void main(String[] args) {
-		Librarian librarian = new Librarian("Jason");
-		librarian.greet();
+	public void printDenial() {
+		System.out.println("You must register first!\n");
+	}
+	
+	// input validation where it would continue to loop if the input is outside 0 - max
+	public int inputCheck(int input, int max) {
+		while (input <= 0 || input > max) {
+			System.out.println("Input invalid! Try again!");
+			input = sc.nextInt();
+		}
+		return input;
 	}
 }

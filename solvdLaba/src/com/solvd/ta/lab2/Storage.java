@@ -1,9 +1,10 @@
 package com.solvd.ta.lab2;
 
 import java.util.ArrayList;
-import java.util.EnumSet;
+import java.util.Scanner;
 
 public class Storage {
+	Scanner sc = new Scanner(System.in);
 	protected ArrayList<Media> arr = new ArrayList<Media>();
 	protected int capacity;
 
@@ -25,7 +26,7 @@ public class Storage {
 
 	public void printInventory() {
 		for (int i = 0; i < arr.size(); i++) {
-			System.out.println(arr.get(i).title);
+			System.out.println(i + 1 + ". " + arr.get(i).title);
 		}
 		System.out.println();
 	}
@@ -34,18 +35,16 @@ public class Storage {
 		this.arr = (ArrayList<Media>) arr.clone();
 	}
 
-	public static void main(String[] args) {
-		Storage storage = new Storage();
-		Book dune = new Book("Dune", 1965, EnumSet.of(Genre.SCIFI, Genre.FANTASY), "Frank Herbert", 896);
-		Manga demon = new Manga("Demon Slayer: Kimetsu no Yaiba", 2018, EnumSet.of(Genre.ADVENTURE), "Koyoharu Gotouge",
-				192, "Shonen", 1, 1, 7);
-		Movie batman = new Movie("The Dark Knight", 2008, EnumSet.of(Genre.ACTION, Genre.THRILLER), "Christopher Nolan",
-				152, 9.0);
-		storage.addMedia(dune);
-		storage.addMedia(demon);
-		storage.addMedia(batman);
-		storage.printInventory();
-		storage.removeMedia(batman);
-		storage.printInventory();
+	public void selectionMenu(int i) {
+		System.out.println("\n" + arr.get(i - 1).title + " selected");
+		System.out.println("Pick an action");
+		System.out.println("1. View details");
+		System.out.println("2. Add to cart");
+		System.out.println("3. Cancel");
+	}
+
+	public void printDetails(int i) {
+		System.out.println("\nDetails");
+		System.out.println(arr.get(i - 1) + "\n");
 	}
 }

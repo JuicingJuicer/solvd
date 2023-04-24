@@ -6,19 +6,12 @@ import java.util.Scanner;
 public class Member {
 	private String name;
 	private int id;
+	private boolean isRegistered = false;
+	private Preferences preferences = new Preferences();
 
 	Scanner sc = new Scanner(System.in);
 
-	public Member(String name) {
-		this.setName(name);
-		Random rando = new Random();
-		this.id = rando.nextInt(1000);
-	}
-
 	public Member() {
-		System.out.println("Enter your name:");
-		// user input
-		this.name = sc.nextLine();
 		Random rando = new Random();
 		this.id = rando.nextInt(1000);
 	}
@@ -31,12 +24,20 @@ public class Member {
 		this.id = id;
 	}
 
+	public void setIsRegistered(boolean isRegistered) {
+		this.isRegistered = isRegistered;
+	}
+
 	public String getName() {
 		return this.name;
 	}
 
 	public int getId() {
 		return this.id;
+	}
+
+	public boolean getIsRegistered() {
+		return this.isRegistered;
 	}
 
 	public static void main(String[] args) {

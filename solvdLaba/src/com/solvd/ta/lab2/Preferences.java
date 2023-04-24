@@ -10,7 +10,7 @@ public class Preferences {
 	}
 
 	public Preferences() {
-		prefs = EnumSet.noneOf(Genre.class);
+		prefs = EnumSet.allOf(Genre.class);
 	}
 
 	public void setPreferences(EnumSet<Genre> prefs) {
@@ -27,11 +27,5 @@ public class Preferences {
 
 	public void removeGenre(Genre genre) {
 		prefs.remove(genre);
-	}
-
-	public static void main(String[] args) {
-		Preferences prep = new Preferences();
-		prep.addGenre(Genre.ACTION);
-		System.out.print(prep.getPreferences());
 	}
 }
