@@ -11,6 +11,7 @@ public class Main {
 		Storage storage = new Storage();
 		Cart cart = new Cart();
 		int input, selection, choice;
+		String option;
 
 		// generates media objects and clones it to storage
 		storage.cloneItems(Populate.generateItems());
@@ -57,6 +58,36 @@ public class Main {
 			case 3:
 				if (member.getIsRegistered()) {
 					System.out.println("Setting up preferences");
+					member.firstTimeSetup();
+					// preference adding and removing loop
+					do {
+						// print and ask for genre to add/remove
+						member.printBothSets();
+						librarian.printPrefMenu();
+						selection = sc.nextInt();
+
+						// adding/removing options refactor later
+						if (selection == 1) {
+							System.out.println("Input the genre to add!");
+							sc.nextLine();
+							option = sc.nextLine();
+							try {
+								member.addPreference(option);
+							} catch (Exception e) {
+								System.out.println("Input the genre correctly!");
+							}
+
+						} else if (selection == 2) {
+							System.out.println("Input the genre to remove!");
+							sc.nextLine();
+							option = sc.nextLine();
+							try {
+								member.removePreference(option);
+							} catch (Exception e) {
+								System.out.println("Input the genre correctly!");
+							}
+						}
+					} while (selection != 3);
 				} else {
 					librarian.printDenial();
 				}

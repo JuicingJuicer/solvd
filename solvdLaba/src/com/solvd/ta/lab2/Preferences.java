@@ -6,26 +6,39 @@ public class Preferences {
 	private EnumSet<Genre> prefs;
 
 	public Preferences(EnumSet<Genre> prefs) {
-		this.setPreferences(prefs);
+		this.setPrefs(prefs);
 	}
 
 	public Preferences() {
 		prefs = EnumSet.allOf(Genre.class);
 	}
 
-	public void setPreferences(EnumSet<Genre> prefs) {
+	public void setPrefs(EnumSet<Genre> prefs) {
 		this.prefs = prefs;
 	}
 
-	public EnumSet<Genre> getPreferences() {
+	public EnumSet<Genre> getPrefs() {
 		return prefs;
 	}
 
-	public void addGenre(Genre genre) {
-		prefs.add(genre);
+	public void addGenre(String genre) {
+		prefs.add(Genre.valueOf(genre));
 	}
 
-	public void removeGenre(Genre genre) {
-		prefs.remove(genre);
+	public void removeGenre(String genre) {
+		prefs.remove(Genre.valueOf(genre));
+	}
+
+	public void clearGenres() {
+		prefs.clear();
+	}
+
+	public void printGenres() {
+		System.out.println(prefs);
+	}
+
+	public void printGenrePool() {
+		EnumSet<Genre> pool = EnumSet.complementOf(prefs);
+		System.out.println(pool);
 	}
 }

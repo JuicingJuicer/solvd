@@ -48,4 +48,11 @@ public class Librarian {
 		}
 		return input;
 	}
+	
+	public void printPrefMenu() {
+		System.out.println("Enter a number");
+		System.out.println("1. Add Genre");
+		System.out.println("2. Remove Genre");
+		System.out.println("3. Exit");
+	}
 }
