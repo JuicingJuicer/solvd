@@ -68,10 +68,8 @@ public class Storage {
 		filteredArr.addAll(set);
 	}
 
-	public static void main(String[] args) {
-		Storage storage = new Storage();
-		storage.cloneItems(Populate.generateItems());
-		Member mem = new Member();
-		storage.filterItems(mem.getPreferences());
+	public void removeFromBoth(Media media) {
+		arr.remove(media);
+		filteredArr.remove(media);
 	}
 }

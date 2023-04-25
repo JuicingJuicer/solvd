@@ -88,4 +88,25 @@ public class Member {
 		String temp = genre;
 		preferences.removeGenre(temp.toUpperCase());
 	}
+
+	public void addRemoveSwitch(int selection) {
+		String temp;
+		if (selection == 1) {
+			System.out.println("Input the genre to add!");
+			temp = sc.nextLine();
+			try {
+				this.addPreference(temp);
+			} catch (Exception e) {
+				System.out.println("Input the genre correctly!");
+			}
+		} else if (selection == 2) {
+			System.out.println("Input the genre to remove!");
+			temp = sc.nextLine();
+			try {
+				this.removePreference(temp);
+			} catch (Exception e) {
+				System.out.println("Input the genre correctly!");
+			}
+		}
+	}
 }

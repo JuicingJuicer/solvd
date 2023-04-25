@@ -27,24 +27,25 @@ public class Main {
 			case 1:
 				storage.printInventory();
 
-				// item selection
+				// media selection
 				System.out.println("Select an item: ");
 				selection = sc.nextInt();
 				selection = librarian.inputCheck(selection, storage.filteredArr.size());
 
-				// item actions
+				// media actions
 				storage.selectionMenu(selection);
 				choice = sc.nextInt();
 				choice = librarian.inputCheck(choice, 3);
 
-				// view details
+				// view details, add to cart, exit
 				if (choice == 1) {
 					storage.printDetails(selection);
 					break;
-				}
-				// add to cart
-				else if (choice == 2 && member.getIsRegistered()) {
+				} else if (choice == 2 && member.getIsRegistered()) {
 					System.out.println("Adding to cart");
+					cart.addToCart(storage.filteredArr.get(selection - 1));
+					storage.removeFromBoth(storage.filteredArr.get(selection - 1));
+					cart.printCart();
 				} else if (choice == 3) {
 					System.out.println("Exiting");
 				} else {
@@ -68,26 +69,9 @@ public class Main {
 						librarian.printPrefMenu();
 						selection = sc.nextInt();
 
-						// adding/removing options refactor later
-						if (selection == 1) {
-							System.out.println("Input the genre to add!");
-							sc.nextLine();
-							option = sc.nextLine();
-							try {
-								member.addPreference(option);
-							} catch (Exception e) {
-								System.out.println("Input the genre correctly!");
-							}
-
-						} else if (selection == 2) {
-							System.out.println("Input the genre to remove!");
-							sc.nextLine();
-							option = sc.nextLine();
-							try {
-								member.removePreference(option);
-							} catch (Exception e) {
-								System.out.println("Input the genre correctly!");
-							}
+						// adding, removing, exit
+						if (selection == 1 || selection == 2) {
+							member.addRemoveSwitch(selection);
 						} else if (selection == 3) {
 							storage.filterItems(member.getPreferences());
 						}
@@ -97,7 +81,7 @@ public class Main {
 				}
 				break;
 			case 4:
-				System.out.println("Work in progress!");
+				cart.printCart();
 				break;
 			case 5:
 				System.out.println("Work in progress!");
