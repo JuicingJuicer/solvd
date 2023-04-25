@@ -30,7 +30,7 @@ public class Main {
 				// item selection
 				System.out.println("Select an item: ");
 				selection = sc.nextInt();
-				selection = librarian.inputCheck(selection, storage.arr.size());
+				selection = librarian.inputCheck(selection, storage.filteredArr.size());
 
 				// item actions
 				storage.selectionMenu(selection);
@@ -43,8 +43,10 @@ public class Main {
 					break;
 				}
 				// add to cart
-				if (choice == 2 && member.getIsRegistered()) {
+				else if (choice == 2 && member.getIsRegistered()) {
 					System.out.println("Adding to cart");
+				} else if (choice == 3) {
+					System.out.println("Exiting");
 				} else {
 					librarian.printDenial();
 				}
@@ -86,6 +88,8 @@ public class Main {
 							} catch (Exception e) {
 								System.out.println("Input the genre correctly!");
 							}
+						} else if (selection == 3) {
+							storage.filterItems(member.getPreferences());
 						}
 					} while (selection != 3);
 				} else {
