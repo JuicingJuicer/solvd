@@ -16,7 +16,7 @@ public class Book extends Media {
 	@Override
 	public String toString() {
 		return "Title: " + title + "\nAuthor: " + author + "\nPublished: " + year + "\nGenre(s): " + genre + "\nPages: "
-				+ pages;
+				+ pages + "\nSerial Number: " + serialNumber;
 	}
 
 	@Override
@@ -33,7 +33,7 @@ public class Book extends Media {
 
 		Book b = (Book) o;
 		return (title.equals(b.title) && year == b.year && genre.equals(b.genre) && author.equals(b.author)
-				&& pages == b.pages);
+				&& pages == b.pages && serialNumber == b.serialNumber);
 	}
 
 	@Override
@@ -41,15 +41,8 @@ public class Book extends Media {
 		int hash = Objects.hash(title, author);
 		hash = 31 * hash + year;
 		hash = 31 * hash + pages;
+		hash = 31 * hash + serialNumber;
 		hash = 31 * hash + genre.hashCode();
 		return hash;
-	}
-
-	public static void main(String[] args) {
-		Book dune = new Book("Dune", 1965, EnumSet.of(Genre.SCIFI, Genre.FANTASY), "Frank Herbert", 896);
-		Book dune2 = new Book("Dune", 1965, EnumSet.of(Genre.SCIFI, Genre.FANTASY), "Frank Herbert", 896);
-		System.out.println("Equals? " + dune.equals(dune2));
-		System.out.println("hash: " + dune.hashCode());
-		System.out.println("hash: " + dune2.hashCode());
 	}
 }

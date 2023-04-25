@@ -1,6 +1,18 @@
 package com.solvd.ta.lab2;
 
-public class Cart extends Storage {
+interface ShoppingCart {
+	public void addToCart(Media media);
+
+	public void removeFromCart(Media media);
+
+	public void checkout();
+
+	public void printCart();
+
+	public int getCartSize();
+}
+
+public class Cart extends Storage implements ShoppingCart {
 
 	public Cart(int capacity) {
 		super(capacity);
@@ -10,18 +22,27 @@ public class Cart extends Storage {
 		super();
 	}
 
+	public void addToCart(Media media) {
+		filteredArr.add(media);
+	}
+
+	public void removeFromCart(Media media) {
+		filteredArr.remove(media);
+	}
+
 	public void checkout() {
 		System.out.println("Checking out ...");
-		arr.clear();
+		filteredArr.clear();
 	}
 
 	public void printCart() {
 		System.out.println("Cart: ");
-		System.out.println(filteredArr.size() + " item(s)");
+		System.out.println(getCartSize() + " item(s)");
 		this.printInventory();
 	}
 
-	public void addToCart(Media media) {
-		filteredArr.add(media);
+	public int getCartSize() {
+		return filteredArr.size();
 	}
+
 }

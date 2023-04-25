@@ -4,25 +4,21 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Member {
+	Random rando = new Random();
+	final int id = rando.nextInt(1000);
 	private String name;
-	private int id;
 	private boolean isRegistered = false;
 	private boolean isSetup = false;
 	private Preferences preferences = new Preferences();
 
 	Scanner sc = new Scanner(System.in);
 
-	public Member() {
-		Random rando = new Random();
-		this.id = rando.nextInt(1000);
+	public Member(String name) {
+		this.setName(name);
 	}
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public void setID(int id) {
-		this.id = id;
 	}
 
 	public void setIsRegistered(boolean isRegistered) {

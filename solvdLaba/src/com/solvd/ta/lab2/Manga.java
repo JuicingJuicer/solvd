@@ -54,7 +54,7 @@ public class Manga extends Book {
 	public String toString() {
 		return "Title: " + title + "\nVolume: " + volume + "\nAuthor: " + author + "\nReleased: " + year + "\nChapters:"
 				+ startChap + "-" + endChap + "\nGenre(s): " + genre + "\nDemographic: " + demographic + "\nPages: "
-				+ pages;
+				+ pages + "\nSerial Number: " + serialNumber;
 	}
 
 	@Override
@@ -72,7 +72,7 @@ public class Manga extends Book {
 		Manga m = (Manga) o;
 		return (title.equals(m.title) && year == m.year && genre.equals(m.genre) && author.equals(m.author)
 				&& pages == m.pages && demographic.equals(m.demographic) && volume == m.volume
-				&& startChap == m.startChap && endChap == m.endChap);
+				&& startChap == m.startChap && endChap == m.endChap && serialNumber == m.serialNumber);
 	}
 
 	@Override
@@ -83,17 +83,8 @@ public class Manga extends Book {
 		hash = 31 * hash + volume;
 		hash = 31 * hash + startChap;
 		hash = 31 * hash + endChap;
+		hash = 31 * hash + serialNumber;
 		hash = 31 * hash + genre.hashCode();
 		return hash;
-	}
-
-	public static void main(String[] args) {
-		Manga demon = new Manga("Demon Slayer: Kimetsu no Yaiba", 2018, EnumSet.of(Genre.ADVENTURE), "Koyoharu Gotouge",
-				192, "Shonen", 1, 1, 7);
-		Manga demon2 = new Manga("Demon Slayer: Kimetsu no Yaiba", 2018, EnumSet.of(Genre.ADVENTURE),
-				"Koyoharu Gotouge", 192, "Shonen", 1, 1, 7);
-		System.out.println("Equals? " + demon.equals(demon2));
-		System.out.println("hash: " + demon.hashCode());
-		System.out.println("hash: " + demon2.hashCode());
 	}
 }

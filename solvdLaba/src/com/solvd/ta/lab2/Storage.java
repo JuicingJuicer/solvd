@@ -6,7 +6,15 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
-public class Storage {
+interface StorageSystem {
+	public void addMedia(Media media);
+
+	public void removeMedia(Media media);
+
+	public void filterItems(Preferences preferences);
+}
+
+public class Storage implements StorageSystem {
 	Scanner sc = new Scanner(System.in);
 	protected ArrayList<Media> arr = new ArrayList<Media>();
 	protected ArrayList<Media> filteredArr = new ArrayList<Media>();
@@ -28,7 +36,7 @@ public class Storage {
 		filteredArr.remove(media);
 	}
 
-	public void printInventory() {
+	final public void printInventory() {
 		for (int i = 0; i < filteredArr.size(); i++) {
 			System.out.println(i + 1 + ". " + filteredArr.get(i).title);
 		}

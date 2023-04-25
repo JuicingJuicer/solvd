@@ -2,6 +2,12 @@ package com.solvd.ta.lab2;
 
 import java.util.Scanner;
 
+interface CustomerService {
+	public void greet();
+
+	public void salutation();
+}
+
 public class Librarian {
 	Scanner sc = new Scanner(System.in);
 	private String name;
@@ -22,22 +28,8 @@ public class Librarian {
 		System.out.println("Hi I'm " + this.name + ", I'm the librarian. How can I help you?");
 	}
 
-	public void denied() {
-		System.out.println("You must register before you can proceed with this action!");
-	}
-
-	public void printMenu() {
-		System.out.println("Enter a number");
-		System.out.println("1. View Collection");
-		System.out.println("2. Register");
-		System.out.println("3. Set preferences");
-		System.out.println("4. View Cart");
-		System.out.println("5. Still deciding");
-		System.out.println("6. Exit");
-	}
-
-	public void printDenial() {
-		System.out.println("You must register first!\n");
+	public void salutation() {
+		System.out.println("I hope you found what you are looking for! Take care and goodbye!");
 	}
 
 	// input validation where it would continue to loop if the input is outside 0 -
@@ -50,10 +42,31 @@ public class Librarian {
 		return input;
 	}
 
+	public void printMenu() {
+		System.out.println("Enter a number");
+		System.out.println("1. View Collection");
+		System.out.println("2. Register");
+		System.out.println("3. Set preferences");
+		System.out.println("4. View Cart");
+		System.out.println("5. Check Out");
+		System.out.println("6. Exit");
+	}
+
+	public void printDenial() {
+		System.out.println("You must register first!\n");
+	}
+
 	public void printPrefMenu() {
 		System.out.println("Enter a number");
 		System.out.println("1. Add Genre");
 		System.out.println("2. Remove Genre");
+		System.out.println("3. Exit");
+	}
+
+	public void printCartMenu() {
+		System.out.println("Enter a number");
+		System.out.println("1. Checkout");
+		System.out.println("2. Work in progress");
 		System.out.println("3. Exit");
 	}
 }

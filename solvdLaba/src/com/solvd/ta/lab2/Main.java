@@ -7,11 +7,10 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		Library library = new Library("Juice Library", "Stockton");
 		Librarian librarian = new Librarian("John");
-		Member member = new Member();
+		Member member = new Member("Kawhi");
 		Storage storage = new Storage();
 		Cart cart = new Cart();
 		int input, selection, choice;
-		String option;
 
 		// generates media objects and clones it to storage
 		storage.cloneItems(Populate.generateItems());
@@ -84,9 +83,15 @@ public class Main {
 				cart.printCart();
 				break;
 			case 5:
-				System.out.println("Work in progress!");
+				if (cart.getCartSize() > 0) {
+					cart.checkout();
+				} else {
+					System.out.println("You can't check out nothing!");
+				}
 				break;
 			case 6:
+				librarian.salutation();
+				sc.close();
 				break;
 			default:
 				System.out.println("Enter a number between 0-6!!!");
