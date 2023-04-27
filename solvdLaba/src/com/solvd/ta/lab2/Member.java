@@ -105,4 +105,13 @@ public class Member {
 			}
 		}
 	}
+
+	public boolean checkRegistration() throws NotRegisteredException {
+		if (this.isRegistered) {
+			return true;
+		} else {
+			throw new NotRegisteredException("You must be registered in order to do this!");
+		}
+
+	}
 }

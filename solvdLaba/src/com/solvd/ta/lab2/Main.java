@@ -40,16 +40,20 @@ public class Main {
 				if (choice == 1) {
 					storage.printDetails(selection);
 					break;
-				} else if (choice == 2 && member.getIsRegistered()) {
-					System.out.println("Adding to cart");
-					cart.addToCart(storage.filteredArr.get(selection - 1));
-					storage.removeFromBoth(storage.filteredArr.get(selection - 1));
-					cart.printCart();
-				} else if (choice == 3) {
-					System.out.println("Exiting");
-				} else {
-					librarian.printDenial();
-				}
+				} else
+					try {
+						if (choice == 2 && member.checkRegistration()) {
+							System.out.println("Adding to cart");
+							cart.addToCart(storage.filteredArr.get(selection - 1));
+							storage.removeFromBoth(storage.filteredArr.get(selection - 1));
+							cart.printCart();
+						} else if (choice == 3) {
+							System.out.println("Exiting");
+						}
+					} catch (NotRegisteredException e) {
+						System.out.println("Caught!!");
+						System.out.println(e);
+					}
 				break;
 			case 2:
 				member.setIsRegistered(true);
