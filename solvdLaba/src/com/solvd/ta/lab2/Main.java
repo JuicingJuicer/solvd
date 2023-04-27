@@ -36,24 +36,22 @@ public class Main {
 				choice = sc.nextInt();
 				choice = librarian.inputCheck(choice, 3);
 
-				// view details, add to cart, exit
+				// view details/add to cart
 				if (choice == 1) {
 					storage.printDetails(selection);
 					break;
-				} else
-					try {
-						if (choice == 2 && member.checkRegistration()) {
-							System.out.println("Adding to cart");
-							cart.addToCart(storage.filteredArr.get(selection - 1));
-							storage.removeFromBoth(storage.filteredArr.get(selection - 1));
-							cart.printCart();
-						} else if (choice == 3) {
-							System.out.println("Exiting");
-						}
-					} catch (NotRegisteredException e) {
-						System.out.println("Caught!!");
-						System.out.println(e);
+				}
+				try {
+					if (choice == 2 && member.checkRegistration()) {
+						System.out.println("Adding to cart");
+						cart.addToCart(storage.filteredArr.get(selection - 1));
+						storage.removeFromBoth(storage.filteredArr.get(selection - 1));
+						cart.printCart();
 					}
+				} catch (NotRegisteredException e) {
+					System.out.println("Caught!!");
+					System.out.println(e);
+				}
 				break;
 			case 2:
 				member.setIsRegistered(true);
