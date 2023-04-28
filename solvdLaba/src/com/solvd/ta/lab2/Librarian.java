@@ -2,6 +2,9 @@ package com.solvd.ta.lab2;
 
 import java.util.Scanner;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 interface CustomerService {
 	public void greet();
 
@@ -11,6 +14,7 @@ interface CustomerService {
 public class Librarian {
 	Scanner sc = new Scanner(System.in);
 	private String name;
+	private static Logger logger = LogManager.getLogger(Librarian.class.getName());
 
 	public Librarian(String name) {
 		this.setName(name);
@@ -43,6 +47,7 @@ public class Librarian {
 	}
 
 	public void printMenu() {
+		logger.info("Testing");
 		System.out.println("Enter a number");
 		System.out.println("1. View Collection");
 		System.out.println("2. Register");

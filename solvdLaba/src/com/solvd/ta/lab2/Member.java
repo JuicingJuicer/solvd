@@ -3,6 +3,9 @@ package com.solvd.ta.lab2;
 import java.util.Random;
 import java.util.Scanner;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Member {
 	Random rando = new Random();
 	final int id = rando.nextInt(1000);
@@ -10,6 +13,7 @@ public class Member {
 	private boolean isRegistered = false;
 	private boolean isSetup = false;
 	private Preferences preferences = new Preferences();
+	private static Logger logger = LogManager.getLogger(Member.class.getName());
 
 	Scanner sc = new Scanner(System.in);
 
@@ -25,7 +29,7 @@ public class Member {
 		this.isRegistered = isRegistered;
 	}
 
-	public void isSetup(boolean isSetup) {
+	public void setIsSetup(boolean isSetup) {
 		this.isSetup = isSetup;
 	}
 
@@ -71,7 +75,15 @@ public class Member {
 	public void firstTimeSetup() {
 		if (!isSetup) {
 			this.clearPreferences();
-			this.isSetup(true);
+			this.setIsSetup(true);
+		}
+	}
+
+	public boolean checkNewMember() throws AlreadyRegisteredException {
+		if (!(this.isRegistered)) {
+			return true;
+		} else {
+			throw new AlreadyRegisteredException("You are already registered!");
 		}
 	}
 
@@ -101,13 +113,13 @@ public class Member {
 			try {
 				this.addPreference(temp);
 			} catch (InvalidGenreException e) {
-				System.out.println(e);
+				logger.error(e);
 			}
 		} else if (selection == 2) {
 			try {
 				this.removePreference(temp);
 			} catch (InvalidGenreException e) {
-				System.out.println(e);
+				logger.error(e);
 			}
 		}
 	}
