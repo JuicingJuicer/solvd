@@ -75,33 +75,39 @@ public class Member {
 		}
 	}
 
-	public void addPreference(String genre) {
+	public void addPreference(String genre) throws InvalidGenreException {
 		String temp = genre;
-		preferences.addGenre(temp.toUpperCase());
+		if (preferences.containsInPool(temp.toUpperCase())) {
+			preferences.addGenre(temp.toUpperCase());
+		} else {
+			throw new InvalidGenreException("Invalid genre");
+		}
 	}
 
-	public void removePreference(String genre) {
+	public void removePreference(String genre) throws InvalidGenreException {
 		String temp = genre;
-		preferences.removeGenre(temp.toUpperCase());
+		if (preferences.containsInPersonal(temp.toUpperCase())) {
+			preferences.removeGenre(temp.toUpperCase());
+		} else {
+			throw new InvalidGenreException("Invalid genre");
+		}
 	}
 
 	public void addRemoveSwitch(int selection) {
 		String temp;
+		System.out.println("Input the genre");
+		temp = sc.nextLine();
 		if (selection == 1) {
-			System.out.println("Input the genre to add!");
-			temp = sc.nextLine();
 			try {
 				this.addPreference(temp);
-			} catch (Exception e) {
-				System.out.println("Input the genre correctly!");
+			} catch (InvalidGenreException e) {
+				System.out.println(e);
 			}
 		} else if (selection == 2) {
-			System.out.println("Input the genre to remove!");
-			temp = sc.nextLine();
 			try {
 				this.removePreference(temp);
-			} catch (Exception e) {
-				System.out.println("Input the genre correctly!");
+			} catch (InvalidGenreException e) {
+				System.out.println(e);
 			}
 		}
 	}
@@ -112,6 +118,5 @@ public class Member {
 		} else {
 			throw new NotRegisteredException("You must be registered in order to do this!");
 		}
-
 	}
 }

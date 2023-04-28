@@ -49,7 +49,6 @@ public class Main {
 						cart.printCart();
 					}
 				} catch (NotRegisteredException e) {
-					System.out.println("Caught!!");
 					System.out.println(e);
 				}
 				break;
@@ -60,35 +59,39 @@ public class Main {
 				System.out.println("Make sure you remember it!");
 				break;
 			case 3:
-				if (member.getIsRegistered()) {
-					System.out.println("Setting up preferences");
-					member.firstTimeSetup();
-					// preference adding and removing loop
-					do {
-						// print and ask for genre to add/remove
-						member.printBothSets();
-						librarian.printPrefMenu();
-						selection = sc.nextInt();
+				try {
+					if (member.checkRegistration()) {
+						System.out.println("Setting up preferences");
+						member.firstTimeSetup();
+						// preference adding and removing loop
+						do {
+							// print and ask for genre to add/remove
+							member.printBothSets();
+							librarian.printPrefMenu();
+							selection = sc.nextInt();
 
-						// adding, removing, exit
-						if (selection == 1 || selection == 2) {
-							member.addRemoveSwitch(selection);
-						} else if (selection == 3) {
-							storage.filterItems(member.getPreferences());
-						}
-					} while (selection != 3);
-				} else {
-					librarian.printDenial();
+							// adding, removing, exit
+							if (selection == 1 || selection == 2) {
+								member.addRemoveSwitch(selection);
+							} else if (selection == 3) {
+								storage.filterItems(member.getPreferences());
+							}
+						} while (selection != 3);
+					}
+				} catch (NotRegisteredException e) {
+					System.out.println(e);
 				}
 				break;
 			case 4:
 				cart.printCart();
 				break;
 			case 5:
-				if (cart.getCartSize() > 0) {
-					cart.checkout();
-				} else {
-					System.out.println("You can't check out nothing!");
+				try {
+					if (cart.checkNotEmpty()) {
+						cart.checkout();
+					}
+				} catch (CartIsEmptyException e) {
+					System.out.println(e);
 				}
 				break;
 			case 6:
@@ -96,7 +99,7 @@ public class Main {
 				sc.close();
 				break;
 			default:
-				System.out.println("Enter a number between 0-6!!!");
+				System.out.println("Enter a number between 1-6!!!");
 			}
 
 		} while (input != 6);

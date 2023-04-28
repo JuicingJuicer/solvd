@@ -52,10 +52,6 @@ public class Librarian {
 		System.out.println("6. Exit");
 	}
 
-	public void printDenial() {
-		System.out.println("You must register first!\n");
-	}
-
 	public void printPrefMenu() {
 		System.out.println("Enter a number");
 		System.out.println("1. Add Genre");

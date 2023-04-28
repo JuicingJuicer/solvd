@@ -45,4 +45,11 @@ public class Cart extends Storage implements ShoppingCart {
 		return filteredArr.size();
 	}
 
+	public boolean checkNotEmpty() throws CartIsEmptyException {
+		if (getCartSize() > 0) {
+			return true;
+		}
+		throw new CartIsEmptyException("You cannot check out with an empty cart! Go add something!");
+	}
+
 }

@@ -49,6 +49,23 @@ public class Preferences implements GenreList {
 		System.out.println(prefs);
 	}
 
+	public boolean containsInPool(String genre) {
+		try {
+			EnumSet<Genre> pool = EnumSet.complementOf(prefs);
+			return pool.contains(Genre.valueOf(genre));
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	public boolean containsInPersonal(String genre) {
+		try {
+			return prefs.contains(Genre.valueOf(genre));
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
 	public void printGenrePool() {
 		EnumSet<Genre> pool = EnumSet.complementOf(prefs);
 		System.out.println(pool);
