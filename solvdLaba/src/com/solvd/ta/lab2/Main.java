@@ -19,6 +19,7 @@ public class Main {
 		// generates media objects and clones it to storage
 		storage.cloneItems(Populate.generateItems());
 
+		logger.info("Testing");
 		library.greetings();
 		librarian.greet();
 

@@ -14,7 +14,7 @@ interface CustomerService {
 public class Librarian {
 	Scanner sc = new Scanner(System.in);
 	private String name;
-	private static Logger logger = LogManager.getLogger(Librarian.class.getName());
+	private static final Logger logger = LogManager.getLogger(Librarian.class.getName());
 
 	public Librarian(String name) {
 		this.setName(name);

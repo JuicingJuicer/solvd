@@ -13,7 +13,7 @@ public class Member {
 	private boolean isRegistered = false;
 	private boolean isSetup = false;
 	private Preferences preferences = new Preferences();
-	private static Logger logger = LogManager.getLogger(Member.class.getName());
+	private static final Logger logger = LogManager.getLogger(Member.class.getName());
 
 	Scanner sc = new Scanner(System.in);
 

@@ -6,6 +6,9 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 interface StorageSystem {
 	public void addMedia(Media media);
 
@@ -19,6 +22,7 @@ public class Storage implements StorageSystem {
 	protected ArrayList<Media> arr = new ArrayList<Media>();
 	protected ArrayList<Media> filteredArr = new ArrayList<Media>();
 	protected int capacity;
+	private static final Logger logger = LogManager.getLogger(Storage.class.getName());
 
 	public Storage(int capacity) {
 		this.capacity = capacity;
