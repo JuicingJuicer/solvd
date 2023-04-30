@@ -1,5 +1,7 @@
 package com.solvd.ta.lab2;
 
+import com.solvd.ta.lab2.Exceptions.CartIsEmptyException;
+
 interface ShoppingCart {
 	public void addToCart(Media media);
 

@@ -5,6 +5,10 @@ import java.util.Scanner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.solvd.ta.lab2.Exceptions.AlreadyRegisteredException;
+import com.solvd.ta.lab2.Exceptions.CartIsEmptyException;
+import com.solvd.ta.lab2.Exceptions.NotRegisteredException;
+
 public class Main {
 	private static Logger logger = LogManager.getLogger(Main.class.getName());
 

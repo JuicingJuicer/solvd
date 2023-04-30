@@ -6,6 +6,10 @@ import java.util.Scanner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.solvd.ta.lab2.Exceptions.AlreadyRegisteredException;
+import com.solvd.ta.lab2.Exceptions.InvalidGenreException;
+import com.solvd.ta.lab2.Exceptions.NotRegisteredException;
+
 public class Member {
 	Random rando = new Random();
 	final int id = rando.nextInt(1000);
