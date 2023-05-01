@@ -5,13 +5,9 @@ import java.util.Scanner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-interface CustomerService {
-	public void greet();
+import com.solvd.ta.lab2.Interfaces.CustomerService;
 
-	public void salutation();
-}
-
-public class Librarian {
+public class Librarian implements CustomerService {
 	Scanner sc = new Scanner(System.in);
 	private String name;
 	private static final Logger logger = LogManager.getLogger(Librarian.class.getName());

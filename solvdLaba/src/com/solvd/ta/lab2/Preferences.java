@@ -2,17 +2,7 @@ package com.solvd.ta.lab2;
 
 import java.util.EnumSet;
 
-interface GenreList {
-	public void addGenre(String genre);
-
-	public void removeGenre(String genre);
-
-	public void clearGenres();
-
-	public void printGenres();
-
-	public void printGenrePool();
-}
+import com.solvd.ta.lab2.Interfaces.GenreList;
 
 public class Preferences implements GenreList {
 	private EnumSet<Genre> prefs;

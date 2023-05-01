@@ -9,13 +9,7 @@ import java.util.Set;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-interface StorageSystem {
-	public void addMedia(Media media);
-
-	public void removeMedia(Media media);
-
-	public void filterItems(Preferences preferences);
-}
+import com.solvd.ta.lab2.Interfaces.StorageSystem;
 
 public class Storage implements StorageSystem {
 	Scanner sc = new Scanner(System.in);

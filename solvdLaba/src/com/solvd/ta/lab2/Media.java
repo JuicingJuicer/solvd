@@ -2,9 +2,7 @@ package com.solvd.ta.lab2;
 
 import java.util.EnumSet;
 
-interface Item {
-	public int getSerialNumber();
-}
+import com.solvd.ta.lab2.Interfaces.Item;
 
 // Base class for classes like books, movies, etc
 public abstract class Media implements Item {
