@@ -18,6 +18,7 @@ public class Member {
 	private boolean isSetup = false;
 	private Preferences preferences = new Preferences();
 	private static final Logger logger = LogManager.getLogger(Member.class.getName());
+	private LinkedList<Media> myItems = new LinkedList<>();
 
 	Scanner sc = new Scanner(System.in);
 
@@ -135,4 +136,17 @@ public class Member {
 			throw new NotRegisteredException("You must be registered in order to do this!");
 		}
 	}
+
+//	public void addMyItems(LinkedList<Media> myItems) {
+//		LinkedList<Media> temp = myItems;
+//		for (Media m : temp) {
+//			this.myItems.add(m);
+//		}
+//	}
+//
+//	public void printMyItems() {
+//		for (Media m : myItems) {
+//			logger.info(m.title);
+//		}
+//	}
 }

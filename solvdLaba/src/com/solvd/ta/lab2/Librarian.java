@@ -44,12 +44,13 @@ public class Librarian implements CustomerService {
 
 	public void printMenu() {
 		logger.info("Enter a number");
-		logger.info("1. View Collection");
+		logger.info("1. View Items");
 		logger.info("2. Register");
 		logger.info("3. Set preferences");
 		logger.info("4. View Cart");
 		logger.info("5. Check Out");
-		logger.info("6. Exit");
+		logger.info("6. View My Profile");
+		logger.info("7. Exit");
 	}
 
 	public void printPrefMenu() {

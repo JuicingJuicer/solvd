@@ -10,7 +10,7 @@ interface ShoppingCart {
 
 	public void removeFromCart(Media media);
 
-	public void checkout();
+	public LinkedList<Media> checkout();
 
 	public void printCart();
 
@@ -36,9 +36,14 @@ public class Cart extends Storage implements ShoppingCart {
 		filteredArr.remove(media);
 	}
 
-	public void checkout() {
+	public LinkedList<Media> checkout() {
 		logger.info("Checking out ...");
+		LinkedList<Media> temp = new LinkedList<>();
+		for (Media m : filteredArr) {
+			temp.add(m);
+		}
 		filteredArr.clear();
+		return temp;
 	}
 
 	public void printCart() {

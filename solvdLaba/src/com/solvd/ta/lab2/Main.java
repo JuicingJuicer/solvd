@@ -105,20 +105,34 @@ public class Main {
 				case 5:
 					try {
 						if (cart.checkNotEmpty()) {
-							cart.checkout();
+							logger.info("Checking out ...");
+							cart.filteredArr.clear();
+//							member.setMyItems(cart.checkout());
 						}
 					} catch (CartIsEmptyException e) {
 						logger.error(e);
 					}
 					break;
 				case 6:
+					try {
+						if (member.checkRegistration()) {
+							logger.info("Your ID: " + member.id);
+							logger.info("Your items: ");
+							logger.info("Work in progress!!!");
+//							member.printMyItems();
+						}
+					} catch (NotRegisteredException e) {
+						logger.error(e);
+					}
+					break;
+				case 7:
 					librarian.salutation();
 					break;
 				default:
-					logger.error("Enter a number between 1-6!!!");
+					logger.error("Enter a number between 1-7!!!");
 				}
 
-			} while (input != 6);
+			} while (input != 7);
 		} catch (Exception e) {
 			logger.error(e);
 		}
