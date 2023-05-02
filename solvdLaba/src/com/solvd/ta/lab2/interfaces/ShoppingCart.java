@@ -1,4 +1,4 @@
-package com.solvd.ta.lab2.Interfaces;
+package com.solvd.ta.lab2.interfaces;
 
 import com.solvd.ta.lab2.Media;
 

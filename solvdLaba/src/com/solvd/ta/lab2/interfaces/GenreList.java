@@ -1,4 +1,4 @@
-package com.solvd.ta.lab2.Interfaces;
+package com.solvd.ta.lab2.interfaces;
 
 public interface GenreList {
 	public void addGenre(String genre);

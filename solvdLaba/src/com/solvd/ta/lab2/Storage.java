@@ -9,7 +9,7 @@ import java.util.Set;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.solvd.ta.lab2.Interfaces.StorageSystem;
+import com.solvd.ta.lab2.interfaces.StorageSystem;
 
 public class Storage implements StorageSystem {
 	Scanner sc = new Scanner(System.in);

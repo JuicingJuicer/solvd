@@ -5,7 +5,7 @@ import java.util.EnumSet;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.solvd.ta.lab2.Interfaces.GenreList;
+import com.solvd.ta.lab2.interfaces.GenreList;
 
 public class Preferences implements GenreList {
 	private EnumSet<Genre> prefs;

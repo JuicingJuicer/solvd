@@ -2,7 +2,7 @@ package com.solvd.ta.lab2;
 
 import java.util.EnumSet;
 
-import com.solvd.ta.lab2.Interfaces.Item;
+import com.solvd.ta.lab2.interfaces.Item;
 
 // Base class for classes like books, movies, etc
 public abstract class Media implements Item {
