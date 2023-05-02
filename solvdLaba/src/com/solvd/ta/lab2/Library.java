@@ -1,8 +1,12 @@
 package com.solvd.ta.lab2;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 final public class Library {
 	private String name;
 	private String city;
+	private static final Logger logger = LogManager.getLogger(Library.class.getName());
 
 	public Library(String name, String city) {
 		this.setName(name);
@@ -26,6 +30,6 @@ final public class Library {
 	}
 
 	public void greetings() {
-		System.out.println("Welcome to " + this.name + " of " + this.city + "!");
+		logger.info("Welcome to " + this.name + " of " + this.city + "!");
 	}
 }

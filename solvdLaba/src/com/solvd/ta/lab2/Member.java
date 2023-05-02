@@ -62,12 +62,12 @@ public class Member {
 	}
 
 	public void printPreferences() {
-		System.out.println("My Preferences: ");
+		logger.info("My Preferences: ");
 		preferences.printGenres();
 	}
 
 	public void printPreferencePool() {
-		System.out.println("Preference Pool: ");
+		logger.info("Preference Pool: ");
 		preferences.printGenrePool();
 	}
 
@@ -111,7 +111,7 @@ public class Member {
 
 	public void addRemoveSwitch(int selection) {
 		String temp;
-		System.out.println("Input the genre");
+		logger.info("Input the genre");
 		temp = sc.nextLine();
 		if (selection == 1) {
 			try {

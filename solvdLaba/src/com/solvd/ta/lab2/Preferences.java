@@ -2,10 +2,14 @@ package com.solvd.ta.lab2;
 
 import java.util.EnumSet;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.solvd.ta.lab2.Interfaces.GenreList;
 
 public class Preferences implements GenreList {
 	private EnumSet<Genre> prefs;
+	private static final Logger logger = LogManager.getLogger(Preferences.class.getName());
 
 	public Preferences(EnumSet<Genre> prefs) {
 		this.setPrefs(prefs);
@@ -36,12 +40,12 @@ public class Preferences implements GenreList {
 	}
 
 	public void printGenres() {
-		System.out.println(prefs);
+		logger.info(prefs);
 	}
 
 	public void printGenrePool() {
 		EnumSet<Genre> pool = EnumSet.complementOf(prefs);
-		System.out.println(pool);
+		logger.info(pool);
 	}
 
 	public boolean containsInPool(String genre) {

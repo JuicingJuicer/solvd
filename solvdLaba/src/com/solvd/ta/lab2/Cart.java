@@ -1,5 +1,8 @@
 package com.solvd.ta.lab2;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.solvd.ta.lab2.Exceptions.CartIsEmptyException;
 
 interface ShoppingCart {
@@ -15,6 +18,7 @@ interface ShoppingCart {
 }
 
 public class Cart extends Storage implements ShoppingCart {
+	private static final Logger logger = LogManager.getLogger(Cart.class.getName());
 
 	public Cart(int capacity) {
 		super(capacity);
@@ -33,13 +37,13 @@ public class Cart extends Storage implements ShoppingCart {
 	}
 
 	public void checkout() {
-		System.out.println("Checking out ...");
+		logger.info("Checking out ...");
 		filteredArr.clear();
 	}
 
 	public void printCart() {
-		System.out.println("Cart: ");
-		System.out.println(getCartSize() + " item(s)");
+		logger.info("Cart: ");
+		logger.info(getCartSize() + " item(s)");
 		this.printInventory();
 	}
 

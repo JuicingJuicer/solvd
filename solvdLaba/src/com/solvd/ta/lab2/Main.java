@@ -10,7 +10,7 @@ import com.solvd.ta.lab2.Exceptions.CartIsEmptyException;
 import com.solvd.ta.lab2.Exceptions.NotRegisteredException;
 
 public class Main {
-	private static Logger logger = LogManager.getLogger(Main.class.getName());
+	private static final Logger logger = LogManager.getLogger(Main.class);
 
 	public static void main(String[] args) {
 		Library library = new Library("Juice Library", "Stockton");
@@ -23,7 +23,6 @@ public class Main {
 		// generates media objects and clones it to storage
 		storage.cloneItems(Populate.generateItems());
 
-		logger.info("Testing");
 		library.greetings();
 		librarian.greet();
 
@@ -38,7 +37,7 @@ public class Main {
 					storage.printInventory();
 
 					// media selection
-					System.out.println("Select an item: ");
+					logger.info("Select an item: ");
 					selection = sc.nextInt();
 					selection = librarian.inputCheck(selection, storage.filteredArr.size());
 
@@ -54,7 +53,7 @@ public class Main {
 					}
 					try {
 						if (choice == 2 && member.checkRegistration()) {
-							System.out.println("Adding to cart");
+							logger.info("Adding to cart");
 							cart.addToCart(storage.filteredArr.get(selection - 1));
 							storage.removeFromBoth(storage.filteredArr.get(selection - 1));
 							cart.printCart();
@@ -67,19 +66,19 @@ public class Main {
 					try {
 						if (member.checkNewMember()) {
 							member.setIsRegistered(true);
-							System.out.println("Registered!");
-							System.out.println("Your id number is " + member.getId());
-							System.out.println("Make sure you remember it!");
+							logger.info("Registered!");
+							logger.info("Your id number is " + member.getId());
+							logger.info("Make sure you remember it!");
 						}
 					} catch (AlreadyRegisteredException e) {
 						logger.error(e);
-						System.out.println("ID: " + member.getId());
+						logger.info("ID: " + member.getId());
 					}
 					break;
 				case 3:
 					try {
 						if (member.checkRegistration()) {
-							System.out.println("Setting up preferences");
+							logger.info("Setting up preferences");
 							member.firstTimeSetup();
 							// preference adding and removing loop
 							do {
@@ -116,7 +115,7 @@ public class Main {
 					librarian.salutation();
 					break;
 				default:
-					System.out.println("Enter a number between 1-6!!!");
+					logger.error("Enter a number between 1-6!!!");
 				}
 
 			} while (input != 6);

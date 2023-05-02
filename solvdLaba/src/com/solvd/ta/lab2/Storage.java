@@ -36,7 +36,8 @@ public class Storage implements StorageSystem {
 
 	final public void printInventory() {
 		for (int i = 0; i < filteredArr.size(); i++) {
-			System.out.println(i + 1 + ". " + filteredArr.get(i).title);
+			logger.info(i + 1 + ". " + filteredArr.get(i).title + " [" + filteredArr.get(i).getClass().getSimpleName()
+					+ "]");
 		}
 		System.out.println();
 	}
@@ -47,16 +48,15 @@ public class Storage implements StorageSystem {
 	}
 
 	public void selectionMenu(int i) {
-		System.out.println("\n" + filteredArr.get(i - 1).title + " selected");
-		System.out.println("Pick an action");
-		System.out.println("1. View details");
-		System.out.println("2. Add to cart");
-		System.out.println("3. Cancel");
+		logger.info("\n" + filteredArr.get(i - 1).title + " selected");
+		logger.info("Pick an action");
+		logger.info("1. View details");
+		logger.info("2. Add to cart");
+		logger.info("3. Cancel");
 	}
 
 	public void printDetails(int i) {
-		System.out.println("\nDetails");
-		System.out.println(filteredArr.get(i - 1) + "\n");
+		logger.info("\nDetails\n" + filteredArr.get(i - 1) + "\n");
 	}
 
 	public void filterItems(Preferences preferences) {

@@ -25,11 +25,11 @@ public class Librarian implements CustomerService {
 	}
 
 	public void greet() {
-		System.out.println("Hi I'm " + this.name + ", I'm the librarian. How can I help you?");
+		logger.info("Hi I'm " + this.name + ", I'm the librarian. How can I help you?");
 	}
 
 	public void salutation() {
-		System.out.println("I hope you found what you are looking for! Take care and goodbye!");
+		logger.info("I hope you found what you are looking for! Take care and goodbye!");
 	}
 
 	// input validation where it would continue to loop if the input is outside 0 -
@@ -43,27 +43,26 @@ public class Librarian implements CustomerService {
 	}
 
 	public void printMenu() {
-		logger.info("Testing");
-		System.out.println("Enter a number");
-		System.out.println("1. View Collection");
-		System.out.println("2. Register");
-		System.out.println("3. Set preferences");
-		System.out.println("4. View Cart");
-		System.out.println("5. Check Out");
-		System.out.println("6. Exit");
+		logger.info("Enter a number");
+		logger.info("1. View Collection");
+		logger.info("2. Register");
+		logger.info("3. Set preferences");
+		logger.info("4. View Cart");
+		logger.info("5. Check Out");
+		logger.info("6. Exit");
 	}
 
 	public void printPrefMenu() {
-		System.out.println("Enter a number");
-		System.out.println("1. Add Genre");
-		System.out.println("2. Remove Genre");
-		System.out.println("3. Exit");
+		logger.info("Enter a number");
+		logger.info("1. Add Genre");
+		logger.info("2. Remove Genre");
+		logger.info("3. Exit");
 	}
 
 	public void printCartMenu() {
-		System.out.println("Enter a number");
-		System.out.println("1. Checkout");
-		System.out.println("2. Work in progress");
-		System.out.println("3. Exit");
+		logger.info("Enter a number");
+		logger.info("1. Checkout");
+		logger.info("2. Work in progress");
+		logger.info("3. Exit");
 	}
 }
