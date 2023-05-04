@@ -1,10 +1,10 @@
-package com.solvd.ta.lab2;
+package com.solvd.ta.lab2.collections;
 
 public class Node<T> {
 	T data;
 	Node<T> next;
 
-	Node(T data) {
+	public Node(T data) {
 		this.data = data;
 		this.next = null;
 	}

@@ -1,7 +1,9 @@
-package com.solvd.ta.lab2;
+package com.solvd.ta.lab2.items;
 
 import java.util.EnumSet;
 import java.util.Objects;
+
+import com.solvd.ta.lab2.Genre;
 
 public class Manga extends Book {
 	private String demographic;
@@ -52,8 +54,8 @@ public class Manga extends Book {
 
 	@Override
 	public String toString() {
-		return "Title: " + title + "\nVolume: " + volume + "\nAuthor: " + author + "\nReleased: " + year + "\nChapters:"
-				+ startChap + "-" + endChap + "\nGenre(s): " + genre + "\nDemographic: " + demographic + "\nPages: "
+		return "Title: " + getTitle() + "\nVolume: " + volume + "\nAuthor: " + author + "\nReleased: " + year + "\nChapters:"
+				+ startChap + "-" + endChap + "\nGenre(s): " + getGenre() + "\nDemographic: " + demographic + "\nPages: "
 				+ pages + "\nSerial Number: " + serialNumber;
 	}
 
@@ -70,21 +72,21 @@ public class Manga extends Book {
 		}
 
 		Manga m = (Manga) o;
-		return (title.equals(m.title) && year == m.year && genre.equals(m.genre) && author.equals(m.author)
+		return (getTitle().equals(m.getTitle()) && year == m.year && getGenre().equals(m.getGenre()) && author.equals(m.author)
 				&& pages == m.pages && demographic.equals(m.demographic) && volume == m.volume
 				&& startChap == m.startChap && endChap == m.endChap && serialNumber == m.serialNumber);
 	}
 
 	@Override
 	public int hashCode() {
-		int hash = Objects.hash(title, author, demographic);
+		int hash = Objects.hash(getTitle(), author, demographic);
 		hash = 31 * hash + year;
 		hash = 31 * hash + pages;
 		hash = 31 * hash + volume;
 		hash = 31 * hash + startChap;
 		hash = 31 * hash + endChap;
 		hash = 31 * hash + serialNumber;
-		hash = 31 * hash + genre.hashCode();
+		hash = 31 * hash + getGenre().hashCode();
 		return hash;
 	}
 }

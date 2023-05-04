@@ -1,14 +1,15 @@
-package com.solvd.ta.lab2;
+package com.solvd.ta.lab2.items;
 
 import java.util.EnumSet;
 
+import com.solvd.ta.lab2.Genre;
 import com.solvd.ta.lab2.interfaces.Item;
 
 // Base class for classes like books, movies, etc
 public abstract class Media implements Item {
-	protected String title;
+	private String title;
 	protected int year;
-	protected EnumSet<Genre> genre;
+	private EnumSet<Genre> genre;
 	protected static int numberOfMedia;
 	protected int serialNumber;
 
@@ -24,9 +25,18 @@ public abstract class Media implements Item {
 		numberOfMedia = 0;
 	}
 
+	public String getTitle() {
+		return title;
+	}
+
+	public EnumSet<Genre> getGenre() {
+		return genre;
+	}
+
 	public abstract String toString();
 
 	public int getSerialNumber() {
 		return this.serialNumber;
 	}
+
 }

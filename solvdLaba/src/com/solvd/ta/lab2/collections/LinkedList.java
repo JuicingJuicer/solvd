@@ -1,18 +1,20 @@
-package com.solvd.ta.lab2;
+package com.solvd.ta.lab2.collections;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import com.solvd.ta.lab2.items.Media;
 
 public class LinkedList<T extends Media> {
 	Node<T> head;
 	private int len = 0;
 	private static Logger logger = LogManager.getLogger(LinkedList.class.getName());
 
-	LinkedList() {
+	public LinkedList() {
 		this.head = null;
 	}
 
-	void add(T data) {
+	public void add(T data) {
 		Node<T> temp = new Node<>(data);
 
 		// empty
@@ -30,7 +32,7 @@ public class LinkedList<T extends Media> {
 		len++;
 	}
 
-	void add(int pos, T data) {
+	public void add(int pos, T data) {
 		if (pos > len + 1) {
 			logger.error("Invalid Position!");
 			return;
@@ -57,7 +59,7 @@ public class LinkedList<T extends Media> {
 		prev.next.next = cur;
 	}
 
-	void remove(T data) {
+	public void remove(T data) {
 		boolean real = false;
 		Node<T> prev = new Node<>(null);
 		prev.next = head;
@@ -95,7 +97,7 @@ public class LinkedList<T extends Media> {
 		}
 	}
 
-	void clear() {
+	public void clear() {
 		head = null;
 		len = 0;
 	}
@@ -110,10 +112,10 @@ public class LinkedList<T extends Media> {
 			return string + "]";
 
 		while (cur.next != null) {
-			string += String.valueOf(cur.data.title) + "\n";
+			string += String.valueOf(cur.data.getTitle()) + "\n";
 			cur = cur.next;
 		}
-		string += String.valueOf(cur.data.title) + "]";
+		string += String.valueOf(cur.data.getTitle()) + "]";
 		return string;
 	}
 }

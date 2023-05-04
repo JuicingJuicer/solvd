@@ -6,19 +6,22 @@ import java.util.Scanner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.solvd.ta.lab2.collections.LinkedList;
 import com.solvd.ta.lab2.exceptions.AlreadyRegisteredException;
 import com.solvd.ta.lab2.exceptions.InvalidGenreException;
 import com.solvd.ta.lab2.exceptions.NotRegisteredException;
+import com.solvd.ta.lab2.items.Media;
 
 public class Member {
 	Random rando = new Random();
-	final int id = rando.nextInt(1000);
+	final long id = System.currentTimeMillis();
 	private String name;
 	private boolean isRegistered = false;
 	private boolean isSetup = false;
 	private Preferences preferences = new Preferences();
 	private static final Logger logger = LogManager.getLogger(Member.class.getName());
 	private LinkedList<Media> myItems = new LinkedList<>();
+	
 
 	Scanner sc = new Scanner(System.in);
 
@@ -42,7 +45,7 @@ public class Member {
 		return this.name;
 	}
 
-	public int getId() {
+	public long getId() {
 		return this.id;
 	}
 

@@ -1,6 +1,6 @@
 package com.solvd.ta.lab2.interfaces;
 
-import com.solvd.ta.lab2.Media;
+import com.solvd.ta.lab2.items.Media;
 
 public interface ShoppingCart {
 	public void addToCart(Media media);

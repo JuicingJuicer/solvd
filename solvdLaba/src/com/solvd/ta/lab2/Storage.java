@@ -10,6 +10,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.solvd.ta.lab2.interfaces.StorageSystem;
+import com.solvd.ta.lab2.items.Media;
 
 public class Storage implements StorageSystem {
 	Scanner sc = new Scanner(System.in);
@@ -36,7 +37,7 @@ public class Storage implements StorageSystem {
 
 	final public void printInventory() {
 		for (int i = 0; i < filteredArr.size(); i++) {
-			logger.info(i + 1 + ". " + filteredArr.get(i).title + " [" + filteredArr.get(i).getClass().getSimpleName()
+			logger.info(i + 1 + ". " + filteredArr.get(i).getTitle() + " [" + filteredArr.get(i).getClass().getSimpleName()
 					+ "]");
 		}
 		System.out.println();
@@ -48,7 +49,7 @@ public class Storage implements StorageSystem {
 	}
 
 	public void selectionMenu(int i) {
-		logger.info("\n" + filteredArr.get(i - 1).title + " selected");
+		logger.info("\n" + filteredArr.get(i - 1).getTitle() + " selected");
 		logger.info("Pick an action");
 		logger.info("1. View details");
 		logger.info("2. Add to cart");
@@ -66,7 +67,7 @@ public class Storage implements StorageSystem {
 		this.filteredArr.clear();
 		for (Genre genre : prefs) {
 			for (int i = 0; i < arr.size(); i++) {
-				if (arr.get(i).genre.contains(genre)) {
+				if (arr.get(i).getGenre().contains(genre)) {
 					set.add(arr.get(i));
 				}
 			}

@@ -1,7 +1,9 @@
-package com.solvd.ta.lab2;
+package com.solvd.ta.lab2.items;
 
 import java.util.EnumSet;
 import java.util.Objects;
+
+import com.solvd.ta.lab2.Genre;
 
 public class Book extends Media {
 	protected String author;
@@ -15,7 +17,7 @@ public class Book extends Media {
 
 	@Override
 	public String toString() {
-		return "Title: " + title + "\nAuthor: " + author + "\nPublished: " + year + "\nGenre(s): " + genre + "\nPages: "
+		return "Title: " + getTitle() + "\nAuthor: " + author + "\nPublished: " + year + "\nGenre(s): " + getGenre() + "\nPages: "
 				+ pages + "\nSerial Number: " + serialNumber;
 	}
 
@@ -32,17 +34,17 @@ public class Book extends Media {
 		}
 
 		Book b = (Book) o;
-		return (title.equals(b.title) && year == b.year && genre.equals(b.genre) && author.equals(b.author)
+		return (getTitle().equals(b.getTitle()) && year == b.year && getGenre().equals(b.getGenre()) && author.equals(b.author)
 				&& pages == b.pages && serialNumber == b.serialNumber);
 	}
 
 	@Override
 	public int hashCode() {
-		int hash = Objects.hash(title, author);
+		int hash = Objects.hash(getTitle(), author);
 		hash = 31 * hash + year;
 		hash = 31 * hash + pages;
 		hash = 31 * hash + serialNumber;
-		hash = 31 * hash + genre.hashCode();
+		hash = 31 * hash + getGenre().hashCode();
 		return hash;
 	}
 }

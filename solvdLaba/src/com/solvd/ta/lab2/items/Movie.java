@@ -1,7 +1,9 @@
-package com.solvd.ta.lab2;
+package com.solvd.ta.lab2.items;
 
 import java.util.EnumSet;
 import java.util.Objects;
+
+import com.solvd.ta.lab2.Genre;
 
 public class Movie extends Media {
 	private String director;
@@ -41,7 +43,7 @@ public class Movie extends Media {
 
 	@Override
 	public String toString() {
-		return "Title: " + title + "\nDirector: " + director + "\nYear Released: " + year + "\nGenre: " + genre
+		return "Title: " + getTitle() + "\nDirector: " + director + "\nYear Released: " + year + "\nGenre: " + getGenre()
 				+ "\nRuntime: " + runtime + " minutes" + "\nIMDb Rating: " + rating + "\nSerial Number: "
 				+ serialNumber;
 	}
@@ -59,18 +61,18 @@ public class Movie extends Media {
 		}
 
 		Movie m = (Movie) o;
-		return (title.equals(m.title) && year == m.year && genre.equals(m.genre) && director.equals(m.director)
+		return (getTitle().equals(m.getTitle()) && year == m.year && getGenre().equals(m.getGenre()) && director.equals(m.director)
 				&& runtime == m.runtime && rating == m.rating && serialNumber == m.serialNumber);
 	}
 
 	@Override
 	public int hashCode() {
-		int hash = Objects.hash(title, director);
+		int hash = Objects.hash(getTitle(), director);
 		hash = 31 * hash + year;
 		hash = 31 * hash + runtime;
 		hash = 31 * hash + serialNumber;
 		hash = 31 * hash + Double.hashCode(rating);
-		hash = 31 * hash + genre.hashCode();
+		hash = 31 * hash + getGenre().hashCode();
 		return hash;
 	}
 }

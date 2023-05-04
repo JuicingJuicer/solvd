@@ -3,7 +3,9 @@ package com.solvd.ta.lab2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.solvd.ta.lab2.collections.LinkedList;
 import com.solvd.ta.lab2.exceptions.CartIsEmptyException;
+import com.solvd.ta.lab2.items.Media;
 
 interface ShoppingCart {
 	public void addToCart(Media media);
