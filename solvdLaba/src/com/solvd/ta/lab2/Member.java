@@ -1,5 +1,6 @@
 package com.solvd.ta.lab2;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -21,7 +22,6 @@ public class Member {
 	private Preferences preferences = new Preferences();
 	private static final Logger logger = LogManager.getLogger(Member.class.getName());
 	private LinkedList<Media> myItems = new LinkedList<>();
-	
 
 	Scanner sc = new Scanner(System.in);
 
@@ -140,16 +140,13 @@ public class Member {
 		}
 	}
 
-//	public void addMyItems(LinkedList<Media> myItems) {
-//		LinkedList<Media> temp = myItems;
-//		for (Media m : temp) {
-//			this.myItems.add(m);
-//		}
-//	}
-//
-//	public void printMyItems() {
-//		for (Media m : myItems) {
-//			logger.info(m.title);
-//		}
-//	}
+	public void addMyItems(ArrayList<Media> purchased) {
+		for (Media m : purchased) {
+			myItems.add(m);
+		}
+	}
+
+	public void printMyItems() {
+		logger.info(myItems);
+	}
 }

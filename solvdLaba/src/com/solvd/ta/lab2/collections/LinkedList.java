@@ -112,7 +112,7 @@ public class LinkedList<T extends Media> {
 			return string + "]";
 
 		while (cur.next != null) {
-			string += String.valueOf(cur.data.getTitle()) + "\n";
+			string += String.valueOf(cur.data.getTitle()) + ", ";
 			cur = cur.next;
 		}
 		string += String.valueOf(cur.data.getTitle()) + "]";

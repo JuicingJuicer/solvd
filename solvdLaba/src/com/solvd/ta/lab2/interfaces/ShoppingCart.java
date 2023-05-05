@@ -1,5 +1,7 @@
 package com.solvd.ta.lab2.interfaces;
 
+import java.util.ArrayList;
+
 import com.solvd.ta.lab2.items.Media;
 
 public interface ShoppingCart {
@@ -7,7 +9,7 @@ public interface ShoppingCart {
 
 	public void removeFromCart(Media media);
 
-	public void checkout();
+	public ArrayList<Media> checkout();
 
 	public void printCart();
 
