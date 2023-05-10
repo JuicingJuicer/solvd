@@ -6,6 +6,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.RegExUtils;
 import org.apache.commons.lang3.StringUtils;
 
 public class UniqueWords {
@@ -20,6 +21,10 @@ public class UniqueWords {
 
 		// loop through array of words and add it to the map
 		for (String word : words) {
+			// removes 0-9 ."()%-
+			word = RegExUtils.replacePattern(word, "[0-9.,\"()%-]", "");
+			word = StringUtils.lowerCase(word);
+
 			if (map.containsKey(word)) {
 				map.put(word, map.get(word) + 1);
 			} else {
