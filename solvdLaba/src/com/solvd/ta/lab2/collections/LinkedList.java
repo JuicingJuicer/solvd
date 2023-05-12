@@ -8,7 +8,7 @@ import com.solvd.ta.lab2.items.Media;
 public class LinkedList<T extends Media> {
 	Node<T> head;
 	private int len = 0;
-	private static Logger logger = LogManager.getLogger(LinkedList.class.getName());
+	private static Logger LOGGER = LogManager.getLogger(LinkedList.class.getName());
 
 	public LinkedList() {
 		this.head = null;
@@ -34,7 +34,7 @@ public class LinkedList<T extends Media> {
 
 	public void add(int pos, T data) {
 		if (pos > len + 1) {
-			logger.error("Invalid Position!");
+			LOGGER.error("Invalid Position!");
 			return;
 		}
 		// start position
@@ -93,7 +93,7 @@ public class LinkedList<T extends Media> {
 		if (real) {
 			len--;
 		} else {
-			logger.error("Invalid value");
+			LOGGER.error("Invalid value");
 		}
 	}
 

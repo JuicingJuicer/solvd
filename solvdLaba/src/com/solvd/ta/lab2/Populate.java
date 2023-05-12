@@ -3,6 +3,7 @@ package com.solvd.ta.lab2;
 import java.util.ArrayList;
 import java.util.EnumSet;
 
+import com.solvd.ta.lab2.enums.Genre;
 import com.solvd.ta.lab2.items.Book;
 import com.solvd.ta.lab2.items.Manga;
 import com.solvd.ta.lab2.items.Media;

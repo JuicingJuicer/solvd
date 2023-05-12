@@ -2,7 +2,7 @@ package com.solvd.ta.lab2.items;
 
 import java.util.EnumSet;
 
-import com.solvd.ta.lab2.Genre;
+import com.solvd.ta.lab2.enums.Genre;
 import com.solvd.ta.lab2.interfaces.Item;
 
 // Base class for classes like books, movies, etc

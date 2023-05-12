@@ -1,8 +1,8 @@
 package com.solvd.ta.lab2;
 
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
+import java.util.function.LongSupplier;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,13 +14,13 @@ import com.solvd.ta.lab2.exceptions.NotRegisteredException;
 import com.solvd.ta.lab2.items.Media;
 
 public class Member {
-	Random rando = new Random();
-	final long id = System.currentTimeMillis();
+	LongSupplier randomValue = () -> System.currentTimeMillis();
+	final long id = randomValue.getAsLong();
 	private String name;
 	private boolean isRegistered = false;
 	private boolean isSetup = false;
 	private Preferences preferences = new Preferences();
-	private static final Logger logger = LogManager.getLogger(Member.class.getName());
+	private static final Logger LOGGER = LogManager.getLogger(Member.class.getName());
 	private LinkedList<Media> myItems = new LinkedList<>();
 
 	Scanner sc = new Scanner(System.in);
@@ -66,12 +66,12 @@ public class Member {
 	}
 
 	public void printPreferences() {
-		logger.info("My Preferences: ");
+		LOGGER.info("My Preferences: ");
 		preferences.printGenres();
 	}
 
 	public void printPreferencePool() {
-		logger.info("Preference Pool: ");
+		LOGGER.info("Preference Pool: ");
 		preferences.printGenrePool();
 	}
 
@@ -115,19 +115,19 @@ public class Member {
 
 	public void addRemoveSwitch(int selection) {
 		String temp;
-		logger.info("Input the genre");
+		LOGGER.info("Input the genre");
 		temp = sc.nextLine();
 		if (selection == 1) {
 			try {
 				this.addPreference(temp);
 			} catch (InvalidGenreException e) {
-				logger.error(e);
+				LOGGER.error(e);
 			}
 		} else if (selection == 2) {
 			try {
 				this.removePreference(temp);
 			} catch (InvalidGenreException e) {
-				logger.error(e);
+				LOGGER.error(e);
 			}
 		}
 	}
@@ -147,6 +147,6 @@ public class Member {
 	}
 
 	public void printMyItems() {
-		logger.info(myItems);
+		LOGGER.info(myItems);
 	}
 }

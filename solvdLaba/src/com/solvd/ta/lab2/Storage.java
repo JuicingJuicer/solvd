@@ -9,6 +9,7 @@ import java.util.Set;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.solvd.ta.lab2.enums.Genre;
 import com.solvd.ta.lab2.interfaces.StorageSystem;
 import com.solvd.ta.lab2.items.Media;
 
@@ -17,7 +18,7 @@ public class Storage implements StorageSystem {
 	protected ArrayList<Media> arr = new ArrayList<Media>();
 	protected ArrayList<Media> filteredArr = new ArrayList<Media>();
 	protected int capacity;
-	private static final Logger logger = LogManager.getLogger(Storage.class.getName());
+	private static final Logger LOGGER = LogManager.getLogger(Storage.class.getName());
 
 	public Storage(int capacity) {
 		this.capacity = capacity;
@@ -37,8 +38,8 @@ public class Storage implements StorageSystem {
 
 	final public void printInventory() {
 		for (int i = 0; i < filteredArr.size(); i++) {
-			logger.info(i + 1 + ". " + filteredArr.get(i).getTitle() + " [" + filteredArr.get(i).getClass().getSimpleName()
-					+ "]");
+			LOGGER.info(i + 1 + ". " + filteredArr.get(i).getTitle() + " ["
+					+ filteredArr.get(i).getClass().getSimpleName() + "]");
 		}
 		System.out.println();
 	}
@@ -49,15 +50,15 @@ public class Storage implements StorageSystem {
 	}
 
 	public void selectionMenu(int i) {
-		logger.info("\n" + filteredArr.get(i - 1).getTitle() + " selected");
-		logger.info("Pick an action");
-		logger.info("1. View details");
-		logger.info("2. Add to cart");
-		logger.info("3. Cancel");
+		LOGGER.info("\n" + filteredArr.get(i - 1).getTitle() + " selected");
+		LOGGER.info("Pick an action");
+		LOGGER.info("1. View details");
+		LOGGER.info("2. Add to cart");
+		LOGGER.info("3. Cancel");
 	}
 
 	public void printDetails(int i) {
-		logger.info("\nDetails\n" + filteredArr.get(i - 1) + "\n");
+		LOGGER.info("\nDetails\n" + filteredArr.get(i - 1) + "\n");
 	}
 
 	public void filterItems(Preferences preferences) {

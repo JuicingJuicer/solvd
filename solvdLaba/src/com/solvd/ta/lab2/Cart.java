@@ -1,6 +1,7 @@
 package com.solvd.ta.lab2;
 
 import java.util.ArrayList;
+import java.util.function.Predicate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,7 +11,8 @@ import com.solvd.ta.lab2.interfaces.ShoppingCart;
 import com.solvd.ta.lab2.items.Media;
 
 public class Cart extends Storage implements ShoppingCart {
-	private static final Logger logger = LogManager.getLogger(Cart.class.getName());
+	private static final Logger LOGGER = LogManager.getLogger(Cart.class.getName());
+	Predicate<Integer> greaterThanZero = x -> x > 0;
 
 	public Cart(int capacity) {
 		super(capacity);
@@ -29,7 +31,7 @@ public class Cart extends Storage implements ShoppingCart {
 	}
 
 	public ArrayList<Media> checkout() {
-		logger.info("Checking out ...");
+		LOGGER.info("Checking out ...");
 		ArrayList<Media> temp = new ArrayList<Media>();
 		for (Media m : filteredArr) {
 			temp.add(m);
@@ -39,8 +41,8 @@ public class Cart extends Storage implements ShoppingCart {
 	}
 
 	public void printCart() {
-		logger.info("Cart: ");
-		logger.info(getCartSize() + " item(s)");
+		LOGGER.info("Cart: ");
+		LOGGER.info(getCartSize() + " item(s)");
 		this.printInventory();
 	}
 
@@ -49,7 +51,7 @@ public class Cart extends Storage implements ShoppingCart {
 	}
 
 	public boolean checkNotEmpty() throws CartIsEmptyException {
-		if (getCartSize() > 0) {
+		if (greaterThanZero.test(getCartSize())) {
 			return true;
 		}
 		throw new CartIsEmptyException("You cannot check out with an empty cart! Go add something!");

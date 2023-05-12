@@ -1,6 +1,7 @@
 package com.solvd.ta.lab2;
 
 import java.util.Scanner;
+import java.util.function.Consumer;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,7 +12,7 @@ import com.solvd.ta.lab2.exceptions.NotRegisteredException;
 import com.solvd.ta.lab2.exceptions.OutOfRangeException;
 
 public class Main {
-	private static final Logger logger = LogManager.getLogger(Main.class);
+	private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
 	public static void main(String[] args) {
 		Library library = new Library("Juice Library", "Stockton");
@@ -20,6 +21,8 @@ public class Main {
 		Storage storage = new Storage();
 		Cart cart = new Cart();
 		int input, selection, choice;
+		Consumer<Long> displayId = x -> LOGGER
+				.info("Registered!\nYour ID number is: " + x + "\nMake sure you remember it!");
 
 		// generates media objects and clones it to storage
 		storage.cloneItems(Populate.generateItems());
@@ -38,7 +41,7 @@ public class Main {
 					storage.printInventory();
 
 					// media selection
-					logger.info("Select an item: ");
+					LOGGER.info("Select an item: ");
 					selection = sc.nextInt();
 					selection = librarian.inputCheck(selection, storage.filteredArr.size());
 
@@ -54,32 +57,30 @@ public class Main {
 					}
 					try {
 						if (choice == 2 && member.checkRegistration()) {
-							logger.info("Adding to cart");
+							LOGGER.info("Adding to cart");
 							cart.addToCart(storage.filteredArr.get(selection - 1));
 							storage.removeFromBoth(storage.filteredArr.get(selection - 1));
 							cart.printCart();
 						}
 					} catch (NotRegisteredException e) {
-						logger.error(e);
+						LOGGER.error(e);
 					}
 					break;
 				case 2:
 					try {
 						if (member.checkNewMember()) {
 							member.setIsRegistered(true);
-							logger.info("Registered!");
-							logger.info("Your id number is " + member.getId());
-							logger.info("Make sure you remember it!");
+							displayId.accept(member.getId());
 						}
 					} catch (AlreadyRegisteredException e) {
-						logger.error(e);
-						logger.info("ID: " + member.getId());
+						LOGGER.error(e);
+						LOGGER.info("ID: " + member.getId());
 					}
 					break;
 				case 3:
 					try {
 						if (member.checkRegistration()) {
-							logger.info("Setting up preferences");
+							LOGGER.info("Setting up preferences");
 							member.firstTimeSetup();
 							// preference adding and removing loop
 							do {
@@ -97,7 +98,7 @@ public class Main {
 							} while (selection != 3);
 						}
 					} catch (NotRegisteredException e) {
-						logger.error(e);
+						LOGGER.error(e);
 					}
 					break;
 				case 4:
@@ -109,18 +110,18 @@ public class Main {
 							member.addMyItems(cart.checkout());
 						}
 					} catch (CartIsEmptyException e) {
-						logger.error(e);
+						LOGGER.error(e);
 					}
 					break;
 				case 6:
 					try {
 						if (member.checkRegistration()) {
-							logger.info("Your ID: " + member.id);
-							logger.info("Your items: ");
+							LOGGER.info("Your ID: " + member.id);
+							LOGGER.info("Your items: ");
 							member.printMyItems();
 						}
 					} catch (NotRegisteredException e) {
-						logger.error(e);
+						LOGGER.error(e);
 					}
 					break;
 				case 7:
@@ -128,12 +129,12 @@ public class Main {
 					break;
 				default:
 					throw new OutOfRangeException("Enter a number between 1-7!");
-//					logger.error("Enter a number between 1-7!");
+//					LOGGER.error("Enter a number between 1-7!");
 				}
 
 			} while (input != 7);
 		} catch (Exception e) {
-			logger.error(e);
+			LOGGER.error(e);
 		}
 	}
 }

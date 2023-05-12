@@ -3,7 +3,7 @@ package com.solvd.ta.lab2.items;
 import java.util.EnumSet;
 import java.util.Objects;
 
-import com.solvd.ta.lab2.Genre;
+import com.solvd.ta.lab2.enums.Genre;
 
 public class Movie extends Media {
 	private String director;
