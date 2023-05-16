@@ -1,5 +1,6 @@
 package com.solvd.ta.lab2;
 
+import java.lang.reflect.Method;
 import java.util.Scanner;
 import java.util.function.Consumer;
 
@@ -69,7 +70,9 @@ public class Main {
 				case 2:
 					try {
 						if (member.checkNewMember()) {
-							member.setIsRegistered(true);
+							Class classM = Class.forName("com.solvd.ta.lab2.Member");
+							Method setRegisterationMethod = classM.getDeclaredMethod("setIsRegistered", boolean.class);
+							setRegisterationMethod.invoke(member, true);
 							displayId.accept(member.getId());
 						}
 					} catch (AlreadyRegisteredException e) {
