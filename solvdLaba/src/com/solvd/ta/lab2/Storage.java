@@ -3,19 +3,24 @@ package com.solvd.ta.lab2;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.solvd.ta.lab2.enums.Genre;
 import com.solvd.ta.lab2.interfaces.StorageSystem;
+import com.solvd.ta.lab2.items.Book;
 import com.solvd.ta.lab2.items.Media;
+import com.solvd.ta.lab2.items.Movie;
 
 public class Storage implements StorageSystem {
 	Scanner sc = new Scanner(System.in);
-	protected ArrayList<Media> arr = new ArrayList<Media>();
+	protected ArrayList<Media> master = new ArrayList<Media>();
+	protected ArrayList<Media> local = new ArrayList<Media>();
 	protected ArrayList<Media> filteredArr = new ArrayList<Media>();
 	protected int capacity;
 	private static final Logger LOGGER = LogManager.getLogger(Storage.class.getName());
@@ -45,7 +50,8 @@ public class Storage implements StorageSystem {
 	}
 
 	public void cloneItems(ArrayList<Media> arr) {
-		this.arr = (ArrayList<Media>) arr.clone();
+		this.master = (ArrayList<Media>) arr.clone();
+		this.local = (ArrayList<Media>) arr.clone();
 		this.filteredArr = (ArrayList<Media>) arr.clone();
 	}
 
@@ -67,9 +73,9 @@ public class Storage implements StorageSystem {
 
 		this.filteredArr.clear();
 		for (Genre genre : prefs) {
-			for (int i = 0; i < arr.size(); i++) {
-				if (arr.get(i).getGenre().contains(genre)) {
-					set.add(arr.get(i));
+			for (int i = 0; i < local.size(); i++) {
+				if (local.get(i).getGenre().contains(genre)) {
+					set.add(local.get(i));
 				}
 			}
 		}
@@ -77,7 +83,74 @@ public class Storage implements StorageSystem {
 	}
 
 	public void removeFromBoth(Media media) {
-		arr.remove(media);
+		local.remove(media);
 		filteredArr.remove(media);
+	}
+
+	public void search(int input) {
+		List<Media> searched = null;
+		int temp;
+		String temp2;
+		double temp3;
+		switch (input) {
+		case 1:
+			LOGGER.info("Enter serial number: ");
+			temp = sc.nextInt();
+			sc.nextLine();
+			searched = master.stream().filter(a -> a.getSerialNumber() == temp).collect(Collectors.toList());
+			break;
+		case 2:
+			LOGGER.info("Enter title: ");
+			temp2 = sc.nextLine();
+			searched = master.stream().filter(a -> a.getTitle().equalsIgnoreCase(temp2)).collect(Collectors.toList());
+			break;
+		case 3:
+			LOGGER.info("Enter the type (the types are BOOK, MOVIE, MANGA)");
+			temp2 = sc.nextLine();
+			searched = master.stream().filter(a -> a.getClass().getSimpleName().equalsIgnoreCase(temp2))
+					.collect(Collectors.toList());
+			break;
+		case 4:
+			LOGGER.info("Enter the author: ");
+			temp2 = sc.nextLine();
+			searched = master.stream()
+					.filter(a -> a.getClass().getSimpleName().equals("Book")
+							|| a.getClass().getSimpleName().equals("Manga"))
+					.map(a -> (Book) a).filter(a -> a.getAuthor().equalsIgnoreCase(temp2)).map(a -> (Media) a)
+					.collect(Collectors.toList());
+			break;
+		case 5:
+			LOGGER.info("Enter the number of pages: ");
+			temp = sc.nextInt();
+			sc.nextLine();
+			searched = master.stream()
+					.filter(a -> a.getClass().getSimpleName().equals("Book")
+							|| a.getClass().getSimpleName().equals("Manga"))
+					.map(a -> (Book) a).filter(a -> a.getPages() > temp).map(a -> (Media) a)
+					.collect(Collectors.toList());
+			break;
+		case 6:
+			LOGGER.info("Enter the rating: ");
+			temp3 = sc.nextDouble();
+			sc.nextLine();
+			searched = master.stream().filter(a -> a.getClass().getSimpleName().equals("Movie")).map(a -> (Movie) a)
+					.filter(a -> a.getRating() > temp3).map(a -> (Media) a).collect(Collectors.toList());
+			break;
+		case 7:
+			LOGGER.info("Enter the number of minutes: ");
+			temp = sc.nextInt();
+			sc.nextLine();
+			searched = master.stream().filter(a -> a.getClass().getSimpleName().equals("Movie")).map(a -> (Movie) a)
+					.filter(a -> a.getRuntime() > temp).map(a -> (Media) a).collect(Collectors.toList());
+			break;
+		default:
+			LOGGER.info("Invalid input");
+		}
+
+		if (searched.size() == 0) {
+			LOGGER.info("NO RESULTS!");
+		} else {
+			LOGGER.info(searched);
+		}
 	}
 }

@@ -54,7 +54,8 @@ public class Librarian implements CustomerService {
 		LOGGER.info("4. View Cart");
 		LOGGER.info("5. Check Out");
 		LOGGER.info("6. View My Profile");
-		LOGGER.info("7. Exit");
+		LOGGER.info("7. Search");
+		LOGGER.info("8. Exit");
 	}
 
 	public void printPrefMenu() {
@@ -69,5 +70,10 @@ public class Librarian implements CustomerService {
 		LOGGER.info("1. Checkout");
 		LOGGER.info("2. Work in progress");
 		LOGGER.info("3. Exit");
+	}
+
+	public void printSearchMenu() {
+		LOGGER.info(
+				"Enter a number\nSearch via ... \n1. via Serial number\n2. via Title\n3. via Type\n4. via Author\n5. via Books over x pages\n6. via Movies over x IMDb rating\n7. Movies over x minutes");
 	}
 }

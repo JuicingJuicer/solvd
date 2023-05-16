@@ -125,14 +125,18 @@ public class Main {
 					}
 					break;
 				case 7:
+					librarian.printSearchMenu();
+					choice = sc.nextInt();
+					storage.search(choice);
+					break;
+				case 8:
 					librarian.salutation();
 					break;
 				default:
-					throw new OutOfRangeException("Enter a number between 1-7!");
-//					LOGGER.error("Enter a number between 1-7!");
+					throw new OutOfRangeException("Enter a number between 1-8!");
+//					LOGGER.error("Enter a number between 1-8!");
 				}
-
-			} while (input != 7);
+			} while (input != 8);
 		} catch (Exception e) {
 			LOGGER.error(e);
 		}

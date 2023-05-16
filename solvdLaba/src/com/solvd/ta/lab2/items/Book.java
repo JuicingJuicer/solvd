@@ -7,7 +7,7 @@ import com.solvd.ta.lab2.enums.Genre;
 
 public class Book extends Media {
 	protected String author;
-	protected int pages;
+	int pages;
 
 	public Book(String title, int year, EnumSet<Genre> genre, String author, int pages) {
 		super(title, year, genre);
@@ -15,10 +15,18 @@ public class Book extends Media {
 		this.pages = pages;
 	}
 
+	public String getAuthor() {
+		return author;
+	}
+
+	public int getPages() {
+		return pages;
+	}
+
 	@Override
 	public String toString() {
-		return "Title: " + getTitle() + "\nAuthor: " + author + "\nPublished: " + year + "\nGenre(s): " + getGenre() + "\nPages: "
-				+ pages + "\nSerial Number: " + serialNumber;
+		return "\nTitle: " + getTitle() + "\nAuthor: " + author + "\nPublished: " + year + "\nGenre(s): " + getGenre()
+				+ "\nPages: " + pages + "\nSerial Number: " + serialNumber;
 	}
 
 	@Override
@@ -34,8 +42,8 @@ public class Book extends Media {
 		}
 
 		Book b = (Book) o;
-		return (getTitle().equals(b.getTitle()) && year == b.year && getGenre().equals(b.getGenre()) && author.equals(b.author)
-				&& pages == b.pages && serialNumber == b.serialNumber);
+		return (getTitle().equals(b.getTitle()) && year == b.year && getGenre().equals(b.getGenre())
+				&& author.equals(b.author) && pages == b.pages && serialNumber == b.serialNumber);
 	}
 
 	@Override

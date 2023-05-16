@@ -54,9 +54,9 @@ public class Manga extends Book {
 
 	@Override
 	public String toString() {
-		return "Title: " + getTitle() + "\nVolume: " + volume + "\nAuthor: " + author + "\nReleased: " + year + "\nChapters:"
-				+ startChap + "-" + endChap + "\nGenre(s): " + getGenre() + "\nDemographic: " + demographic + "\nPages: "
-				+ pages + "\nSerial Number: " + serialNumber;
+		return "\nTitle: " + getTitle() + "\nVolume: " + volume + "\nAuthor: " + author + "\nReleased: " + year
+				+ "\nChapters:" + startChap + "-" + endChap + "\nGenre(s): " + getGenre() + "\nDemographic: "
+				+ demographic + "\nPages: " + pages + "\nSerial Number: " + serialNumber;
 	}
 
 	@Override
@@ -72,9 +72,10 @@ public class Manga extends Book {
 		}
 
 		Manga m = (Manga) o;
-		return (getTitle().equals(m.getTitle()) && year == m.year && getGenre().equals(m.getGenre()) && author.equals(m.author)
-				&& pages == m.pages && demographic.equals(m.demographic) && volume == m.volume
-				&& startChap == m.startChap && endChap == m.endChap && serialNumber == m.serialNumber);
+		return (getTitle().equals(m.getTitle()) && year == m.year && getGenre().equals(m.getGenre())
+				&& author.equals(m.author) && pages == m.pages && demographic.equals(m.demographic)
+				&& volume == m.volume && startChap == m.startChap && endChap == m.endChap
+				&& serialNumber == m.serialNumber);
 	}
 
 	@Override

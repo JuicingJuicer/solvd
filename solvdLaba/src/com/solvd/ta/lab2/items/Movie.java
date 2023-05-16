@@ -43,8 +43,8 @@ public class Movie extends Media {
 
 	@Override
 	public String toString() {
-		return "Title: " + getTitle() + "\nDirector: " + director + "\nYear Released: " + year + "\nGenre: " + getGenre()
-				+ "\nRuntime: " + runtime + " minutes" + "\nIMDb Rating: " + rating + "\nSerial Number: "
+		return "\nTitle: " + getTitle() + "\nDirector: " + director + "\nYear Released: " + year + "\nGenre: "
+				+ getGenre() + "\nRuntime: " + runtime + " minutes" + "\nIMDb Rating: " + rating + "\nSerial Number: "
 				+ serialNumber;
 	}
 
@@ -61,8 +61,9 @@ public class Movie extends Media {
 		}
 
 		Movie m = (Movie) o;
-		return (getTitle().equals(m.getTitle()) && year == m.year && getGenre().equals(m.getGenre()) && director.equals(m.director)
-				&& runtime == m.runtime && rating == m.rating && serialNumber == m.serialNumber);
+		return (getTitle().equals(m.getTitle()) && year == m.year && getGenre().equals(m.getGenre())
+				&& director.equals(m.director) && runtime == m.runtime && rating == m.rating
+				&& serialNumber == m.serialNumber);
 	}
 
 	@Override
