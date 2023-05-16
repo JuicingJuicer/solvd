@@ -18,6 +18,11 @@ public class Populate {
 		arr.add(new Book("The Help", 2009, EnumSet.of(Genre.FICTION), "Kathryn Stockett", 311));
 		arr.add(new Book("Pride and Prejudice", 1813, EnumSet.of(Genre.ROMANCE), "Jane Austen", 432));
 		arr.add(new Book("Lock In", 2014, EnumSet.of(Genre.SCIFI), "John Scalzi", 336));
+		arr.add(new Book("The Hunger Games", 2008, EnumSet.of(Genre.SCIFI, Genre.THRILLER), "Suzanne Collins", 374));
+		arr.add(new Book("The Handmaid's Tale", 1985, EnumSet.of(Genre.SCIFI), "Margaret Atwood", 311));
+		arr.add(new Book("Macbeth", 1623, EnumSet.of(Genre.SCIFI), "William Shakespeare", 132));
+		arr.add(new Book("The Hobbbit", 1937, EnumSet.of(Genre.FANTASY), "J. R. R. Tolkien", 310));
+		arr.add(new Book("The Grapes of Wrath", 1939, EnumSet.of(Genre.FICTION), "John Steinbeck", 464));
 		return arr;
 	}
 
@@ -30,6 +35,12 @@ public class Populate {
 		arr.add(new Movie("Forrest Gump", 1994, EnumSet.of(Genre.COMEDY, Genre.DRAMA), "Robert Zemeckis", 142, 8.8));
 		arr.add(new Movie("The Shawshank Redemption", 1994, EnumSet.of(Genre.DRAMA, Genre.CRIME), "Frank Darabont", 142,
 				9.3));
+		arr.add(new Movie("The Terminator", 1984, EnumSet.of(Genre.ACTION, Genre.ADVENTURE), "James Cameron", 107,
+				8.1));
+		arr.add(new Movie("Prisoners", 2013, EnumSet.of(Genre.THRILLER, Genre.DRAMA), "Denis Villeneuve", 153, 8.1));
+		arr.add(new Movie("Toy Story 3", 2010, EnumSet.of(Genre.COMEDY, Genre.ADVENTURE), "Lee Unkrich", 103, 8.3));
+		arr.add(new Movie("Fight Club", 1999, EnumSet.of(Genre.ACTION, Genre.THRILLER), "David Fincher", 139, 8.8));
+		arr.add(new Movie("The Truman Show", 1998, EnumSet.of(Genre.SATIRE, Genre.COMEDY), "Peter Weir", 103, 8.2));
 		return arr;
 	}
 
