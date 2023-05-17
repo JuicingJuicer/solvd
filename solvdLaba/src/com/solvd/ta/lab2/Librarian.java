@@ -36,15 +36,22 @@ public class Librarian implements CustomerService {
 		LOGGER.info("I hope you found what you are looking for! Take care and goodbye!");
 	}
 
-	// input validation where it would continue to loop if the input is outside 0 -
-	// max
-	public int inputCheck(int input, int max) {
-		while (lessThanZero.test(input) || greaterThanMax.test(input, max)) {
-			System.out.println("Input invalid! Try again!");
+	// input validation where it would continue to loop based on the lambda
+	public int inputCheck(int input, int max, BiPredicate<Integer, Integer> rules) {
+		while (rules.test(input, max)) {
+			LOGGER.info("Input invalid! Try again!");
 			input = sc.nextInt();
 		}
 		return input;
 	}
+
+//	public int inputCheck(int input, int max) {
+//		while (lessThanZero.test(input) || greaterThanMax.test(input, max)) {
+//			System.out.println("Input invalid! Try again!");
+//			input = sc.nextInt();
+//		}
+//		return input;
+//	}
 
 	public void printMenu() {
 		LOGGER.info("Enter a number");

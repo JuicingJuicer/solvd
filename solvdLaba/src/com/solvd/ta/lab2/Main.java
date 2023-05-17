@@ -44,12 +44,12 @@ public class Main {
 					// media selection
 					LOGGER.info("Select an item: ");
 					selection = sc.nextInt();
-					selection = librarian.inputCheck(selection, storage.filteredArr.size());
+					selection = librarian.inputCheck(selection, storage.filteredArr.size(), (x, y) -> x > y || x <= 0);
 
 					// media actions
 					storage.selectionMenu(selection);
 					choice = sc.nextInt();
-					choice = librarian.inputCheck(choice, 3);
+					choice = librarian.inputCheck(choice, 3, (x, y) -> x > y || x <= 0);
 
 					// view details/add to cart
 					if (choice == 1) {
