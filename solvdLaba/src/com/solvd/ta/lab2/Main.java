@@ -1,8 +1,8 @@
 package com.solvd.ta.lab2;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Scanner;
-import java.util.function.Consumer;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,15 +15,16 @@ import com.solvd.ta.lab2.exceptions.OutOfRangeException;
 public class Main {
 	private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
-	public static void main(String[] args) {
-		Library library = new Library("Juice Library", "Stockton");
+	public static void main(String[] args) throws InstantiationException, IllegalAccessException,
+			IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+//		Library library = new Library("Juice Library", "Stockton");
+		Library library = Library.class.getConstructor(String.class, String.class).newInstance("Juice Library",
+				"Stockton");
 		Librarian librarian = new Librarian("John");
 		Member member = new Member("Kawhi");
 		Storage storage = new Storage();
 		Cart cart = new Cart();
 		int input, selection, choice;
-		Consumer<Long> displayId = x -> LOGGER
-				.info("Registered!\nYour ID number is: " + x + "\nMake sure you remember it!");
 
 		// generates media objects and clones it to storage
 		storage.cloneItems(Populate.generateItems());
@@ -73,7 +74,8 @@ public class Main {
 							Class classM = Class.forName("com.solvd.ta.lab2.Member");
 							Method setRegisterationMethod = classM.getDeclaredMethod("setIsRegistered", boolean.class);
 							setRegisterationMethod.invoke(member, true);
-							displayId.accept(member.getId());
+							LOGGER.info("Registered!\nYour ID number is: " + member.getId()
+									+ "\nMake sure you remember it!");
 						}
 					} catch (AlreadyRegisteredException e) {
 						LOGGER.error(e);
@@ -133,6 +135,11 @@ public class Main {
 					storage.search(choice);
 					break;
 				case 8:
+					librarian.printStatsMenu();
+					choice = sc.nextInt();
+					storage.stats(choice);
+					break;
+				case 9:
 					librarian.salutation();
 					break;
 				default:

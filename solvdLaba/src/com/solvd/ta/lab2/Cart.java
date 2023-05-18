@@ -1,7 +1,6 @@
 package com.solvd.ta.lab2;
 
 import java.util.ArrayList;
-import java.util.function.Predicate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,7 +11,6 @@ import com.solvd.ta.lab2.items.Media;
 
 public class Cart extends Storage implements ShoppingCart {
 	private static final Logger LOGGER = LogManager.getLogger(Cart.class.getName());
-	Predicate<Integer> greaterThanZero = x -> x > 0;
 
 	public Cart(int capacity) {
 		super(capacity);
@@ -43,7 +41,8 @@ public class Cart extends Storage implements ShoppingCart {
 	public void printCart() {
 		LOGGER.info("Cart: ");
 		LOGGER.info(getCartSize() + " item(s)");
-		this.printInventory();
+		printer((a) -> a.forEach(
+				m -> LOGGER.info(m.getTitle() + " (" + m.getYear() + ") [" + m.getClass().getSimpleName() + "]")));
 	}
 
 	public int getCartSize() {
@@ -51,7 +50,7 @@ public class Cart extends Storage implements ShoppingCart {
 	}
 
 	public boolean checkNotEmpty() throws CartIsEmptyException {
-		if (greaterThanZero.test(getCartSize())) {
+		if (getCartSize() > 0) {
 			return true;
 		}
 		throw new CartIsEmptyException("You cannot check out with an empty cart! Go add something!");

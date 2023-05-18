@@ -2,7 +2,6 @@ package com.solvd.ta.lab2;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.function.LongSupplier;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,8 +13,7 @@ import com.solvd.ta.lab2.exceptions.NotRegisteredException;
 import com.solvd.ta.lab2.items.Media;
 
 public class Member {
-	LongSupplier randomValue = () -> System.currentTimeMillis();
-	final long id = randomValue.getAsLong();
+	final long id = System.currentTimeMillis();
 	private String name;
 	private boolean isRegistered = false;
 	private boolean isSetup = false;

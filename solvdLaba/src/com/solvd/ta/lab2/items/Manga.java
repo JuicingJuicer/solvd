@@ -54,7 +54,7 @@ public class Manga extends Book {
 
 	@Override
 	public String toString() {
-		return "\nTitle: " + getTitle() + "\nVolume: " + volume + "\nAuthor: " + author + "\nReleased: " + year
+		return "\nTitle: " + getTitle() + "\nVolume: " + volume + "\nAuthor: " + author + "\nReleased: " + getYear()
 				+ "\nChapters:" + startChap + "-" + endChap + "\nGenre(s): " + getGenre() + "\nDemographic: "
 				+ demographic + "\nPages: " + pages + "\nSerial Number: " + serialNumber;
 	}
@@ -72,7 +72,7 @@ public class Manga extends Book {
 		}
 
 		Manga m = (Manga) o;
-		return (getTitle().equals(m.getTitle()) && year == m.year && getGenre().equals(m.getGenre())
+		return (getTitle().equals(m.getTitle()) && getYear() == m.getYear() && getGenre().equals(m.getGenre())
 				&& author.equals(m.author) && pages == m.pages && demographic.equals(m.demographic)
 				&& volume == m.volume && startChap == m.startChap && endChap == m.endChap
 				&& serialNumber == m.serialNumber);
@@ -81,7 +81,7 @@ public class Manga extends Book {
 	@Override
 	public int hashCode() {
 		int hash = Objects.hash(getTitle(), author, demographic);
-		hash = 31 * hash + year;
+		hash = 31 * hash + getYear();
 		hash = 31 * hash + pages;
 		hash = 31 * hash + volume;
 		hash = 31 * hash + startChap;

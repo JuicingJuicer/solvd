@@ -43,7 +43,7 @@ public class Movie extends Media {
 
 	@Override
 	public String toString() {
-		return "\nTitle: " + getTitle() + "\nDirector: " + director + "\nYear Released: " + year + "\nGenre: "
+		return "\nTitle: " + getTitle() + "\nDirector: " + director + "\nYear Released: " + getYear() + "\nGenre: "
 				+ getGenre() + "\nRuntime: " + runtime + " minutes" + "\nIMDb Rating: " + rating + "\nSerial Number: "
 				+ serialNumber;
 	}
@@ -61,7 +61,7 @@ public class Movie extends Media {
 		}
 
 		Movie m = (Movie) o;
-		return (getTitle().equals(m.getTitle()) && year == m.year && getGenre().equals(m.getGenre())
+		return (getTitle().equals(m.getTitle()) && getYear() == m.getYear() && getGenre().equals(m.getGenre())
 				&& director.equals(m.director) && runtime == m.runtime && rating == m.rating
 				&& serialNumber == m.serialNumber);
 	}
@@ -69,7 +69,7 @@ public class Movie extends Media {
 	@Override
 	public int hashCode() {
 		int hash = Objects.hash(getTitle(), director);
-		hash = 31 * hash + year;
+		hash = 31 * hash + getYear();
 		hash = 31 * hash + runtime;
 		hash = 31 * hash + serialNumber;
 		hash = 31 * hash + Double.hashCode(rating);

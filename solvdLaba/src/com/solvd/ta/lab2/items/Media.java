@@ -29,6 +29,10 @@ public abstract class Media implements Item {
 		return title;
 	}
 
+	public int getYear() {
+		return year;
+	}
+
 	public EnumSet<Genre> getGenre() {
 		return genre;
 	}

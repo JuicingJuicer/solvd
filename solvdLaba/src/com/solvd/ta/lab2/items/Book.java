@@ -25,7 +25,7 @@ public class Book extends Media {
 
 	@Override
 	public String toString() {
-		return "\nTitle: " + getTitle() + "\nAuthor: " + author + "\nPublished: " + year + "\nGenre(s): " + getGenre()
+		return "\nTitle: " + getTitle() + "\nAuthor: " + author + "\nPublished: " + getYear() + "\nGenre(s): " + getGenre()
 				+ "\nPages: " + pages + "\nSerial Number: " + serialNumber;
 	}
 
@@ -42,14 +42,14 @@ public class Book extends Media {
 		}
 
 		Book b = (Book) o;
-		return (getTitle().equals(b.getTitle()) && year == b.year && getGenre().equals(b.getGenre())
+		return (getTitle().equals(b.getTitle()) && getYear() == b.getYear() && getGenre().equals(b.getGenre())
 				&& author.equals(b.author) && pages == b.pages && serialNumber == b.serialNumber);
 	}
 
 	@Override
 	public int hashCode() {
 		int hash = Objects.hash(getTitle(), author);
-		hash = 31 * hash + year;
+		hash = 31 * hash + getYear();
 		hash = 31 * hash + pages;
 		hash = 31 * hash + serialNumber;
 		hash = 31 * hash + getGenre().hashCode();

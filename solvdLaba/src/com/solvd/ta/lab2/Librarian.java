@@ -2,7 +2,6 @@ package com.solvd.ta.lab2;
 
 import java.util.Scanner;
 import java.util.function.BiPredicate;
-import java.util.function.Predicate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -13,8 +12,6 @@ public class Librarian implements CustomerService {
 	Scanner sc = new Scanner(System.in);
 	private String name;
 	private static final Logger LOGGER = LogManager.getLogger(Librarian.class.getName());
-	BiPredicate<Integer, Integer> greaterThanMax = (x, max) -> x > max;
-	Predicate<Integer> lessThanZero = x -> x <= 0;
 
 	public Librarian(String name) {
 		this.setName(name);
@@ -45,14 +42,6 @@ public class Librarian implements CustomerService {
 		return input;
 	}
 
-//	public int inputCheck(int input, int max) {
-//		while (lessThanZero.test(input) || greaterThanMax.test(input, max)) {
-//			System.out.println("Input invalid! Try again!");
-//			input = sc.nextInt();
-//		}
-//		return input;
-//	}
-
 	public void printMenu() {
 		LOGGER.info("Enter a number");
 		LOGGER.info("1. View Items");
@@ -62,7 +51,8 @@ public class Librarian implements CustomerService {
 		LOGGER.info("5. Check Out");
 		LOGGER.info("6. View My Profile");
 		LOGGER.info("7. Search");
-		LOGGER.info("8. Exit");
+		LOGGER.info("8. Random Stats");
+		LOGGER.info("9. Exit");
 	}
 
 	public void printPrefMenu() {
@@ -72,15 +62,13 @@ public class Librarian implements CustomerService {
 		LOGGER.info("3. Exit");
 	}
 
-	public void printCartMenu() {
-		LOGGER.info("Enter a number");
-		LOGGER.info("1. Checkout");
-		LOGGER.info("2. Work in progress");
-		LOGGER.info("3. Exit");
-	}
-
 	public void printSearchMenu() {
 		LOGGER.info(
 				"Enter a number\nSearch via ... \n1. via Serial number\n2. via Title\n3. via Type\n4. via Author\n5. via Books over x pages\n6. via Movies over x IMDb rating\n7. Movies over x minutes");
+	}
+
+	public void printStatsMenu() {
+		LOGGER.info(
+				"Enter a number\n1. Average number of pages of all books\n2. Movie with the highest IMDb score\n3. Total runtime of all movies");
 	}
 }

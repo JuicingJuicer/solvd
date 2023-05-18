@@ -1,9 +1,11 @@
 package com.solvd.ta.lab2;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.EnumSet;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -12,6 +14,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.solvd.ta.lab2.enums.Genre;
+import com.solvd.ta.lab2.interfaces.FormatterFunction;
 import com.solvd.ta.lab2.interfaces.StorageSystem;
 import com.solvd.ta.lab2.items.Book;
 import com.solvd.ta.lab2.items.Media;
@@ -47,6 +50,11 @@ public class Storage implements StorageSystem {
 					+ filteredArr.get(i).getClass().getSimpleName() + "]");
 		}
 		System.out.println();
+	}
+
+	// lambda augument to format how the items are printed
+	public void printer(FormatterFunction<Media> format) {
+		format.apply(filteredArr);
 	}
 
 	public void cloneItems(ArrayList<Media> arr) {
@@ -113,35 +121,31 @@ public class Storage implements StorageSystem {
 		case 4:
 			LOGGER.info("Enter the author: ");
 			temp2 = sc.nextLine();
-			searched = master.stream()
-					.filter(a -> a.getClass().getSimpleName().equals("Book")
-							|| a.getClass().getSimpleName().equals("Manga"))
-					.map(a -> (Book) a).filter(a -> a.getAuthor().equalsIgnoreCase(temp2)).map(a -> (Media) a)
-					.collect(Collectors.toList());
+			searched = master.stream().filter(
+					a -> a.getClass().getSimpleName().equals("Book") || a.getClass().getSimpleName().equals("Manga"))
+					.filter(a -> ((Book) a).getAuthor().equalsIgnoreCase(temp2)).collect(Collectors.toList());
 			break;
 		case 5:
 			LOGGER.info("Enter the number of pages: ");
 			temp = sc.nextInt();
 			sc.nextLine();
-			searched = master.stream()
-					.filter(a -> a.getClass().getSimpleName().equals("Book")
-							|| a.getClass().getSimpleName().equals("Manga"))
-					.map(a -> (Book) a).filter(a -> a.getPages() > temp).map(a -> (Media) a)
-					.collect(Collectors.toList());
+			searched = master.stream().filter(
+					a -> a.getClass().getSimpleName().equals("Book") || a.getClass().getSimpleName().equals("Manga"))
+					.filter(a -> ((Book) a).getPages() > temp).collect(Collectors.toList());
 			break;
 		case 6:
 			LOGGER.info("Enter the rating: ");
 			temp3 = sc.nextDouble();
 			sc.nextLine();
-			searched = master.stream().filter(a -> a.getClass().getSimpleName().equals("Movie")).map(a -> (Movie) a)
-					.filter(a -> a.getRating() > temp3).map(a -> (Media) a).collect(Collectors.toList());
+			searched = master.stream().filter(a -> a.getClass().getSimpleName().equals("Movie"))
+					.filter(a -> ((Movie) a).getRating() > temp3).collect(Collectors.toList());
 			break;
 		case 7:
 			LOGGER.info("Enter the number of minutes: ");
 			temp = sc.nextInt();
 			sc.nextLine();
-			searched = master.stream().filter(a -> a.getClass().getSimpleName().equals("Movie")).map(a -> (Movie) a)
-					.filter(a -> a.getRuntime() > temp).map(a -> (Media) a).collect(Collectors.toList());
+			searched = master.stream().filter(a -> a.getClass().getSimpleName().equals("Movie"))
+					.filter(a -> ((Movie) a).getRuntime() > temp).collect(Collectors.toList());
 			break;
 		default:
 			LOGGER.info("Invalid input");
@@ -151,6 +155,28 @@ public class Storage implements StorageSystem {
 			LOGGER.info("NO RESULTS!");
 		} else {
 			LOGGER.info(searched);
+		}
+	}
+
+	public void stats(int input) {
+		Optional<Media> searched = null;
+		double average;
+		int num;
+		switch (input) {
+		case 1:
+			average = master.stream()
+					.filter(a -> a.getClass().getSimpleName().equals("Book")
+							|| a.getClass().getSimpleName().equals("Manga"))
+					.mapToInt(a -> ((Book) a).getPages()).average().getAsDouble();
+			LOGGER.info("Average: " + average);
+		case 2:
+			searched = master.stream().filter(a -> a.getClass().getSimpleName().equals("Movie"))
+					.max(Comparator.comparing(a -> ((Movie) a).getRating()));
+			LOGGER.info(searched);
+		case 3:
+			num = master.stream().filter(a -> a.getClass().getSimpleName().equals("Movie"))
+					.map(a -> ((Movie) a).getRuntime()).reduce(0, (a, b) -> a + b);
+			LOGGER.info("Total runtime of all movies is " + num + " minutes");
 		}
 	}
 }
