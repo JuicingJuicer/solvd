@@ -28,6 +28,6 @@ public class ConnectionPool {
 	public synchronized void releaseConnection(Connection c) {
 		usedPool.remove(c);
 		pool.add(c);
-		notifyAll();
+		notify();
 	}
 }
