@@ -1,6 +1,5 @@
 package com.solvd.ta.lab2;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Scanner;
 
@@ -15,8 +14,7 @@ import com.solvd.ta.lab2.exceptions.OutOfRangeException;
 public class Main {
 	private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
-	public static void main(String[] args) throws InstantiationException, IllegalAccessException,
-			IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+	public static void main(String[] args) throws Exception {
 //		Library library = new Library("Juice Library", "Stockton");
 		Library library = Library.class.getConstructor(String.class, String.class).newInstance("Juice Library",
 				"Stockton");
@@ -146,7 +144,7 @@ public class Main {
 					throw new OutOfRangeException("Enter a number between 1-8!");
 //					LOGGER.error("Enter a number between 1-8!");
 				}
-			} while (input != 8);
+			} while (input != 9);
 		} catch (Exception e) {
 			LOGGER.error(e);
 		}
