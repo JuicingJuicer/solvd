@@ -12,14 +12,22 @@ public class ConnectionPool {
 		}
 	}
 
-	public Connection getConnection() {
-		Connection c = pool.remove(pool.size() - 1);
+	public synchronized Connection getConnection() {
+		if (pool.size() == 0) {
+			try {
+				wait();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		Connection c = pool.remove(0);
 		usedPool.add(c);
 		return c;
 	}
 
-	public void releaseConnection(Connection c) {
-		pool.add(c);
+	public synchronized void releaseConnection(Connection c) {
 		usedPool.remove(c);
+		pool.add(c);
+		notifyAll();
 	}
 }
