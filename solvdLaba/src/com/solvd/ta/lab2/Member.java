@@ -20,8 +20,7 @@ public class Member {
 	private Preferences preferences = new Preferences();
 	private static final Logger LOGGER = LogManager.getLogger(Member.class.getName());
 	private LinkedList<Media> myItems = new LinkedList<>();
-
-	Scanner sc = new Scanner(System.in);
+	private Scanner sc = new Scanner(System.in);
 
 	public Member(String name) {
 		this.setName(name);

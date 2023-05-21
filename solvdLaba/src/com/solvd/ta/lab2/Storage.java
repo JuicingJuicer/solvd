@@ -25,16 +25,7 @@ public class Storage implements StorageSystem {
 	protected ArrayList<Media> master = new ArrayList<Media>();
 	protected ArrayList<Media> local = new ArrayList<Media>();
 	protected ArrayList<Media> filteredArr = new ArrayList<Media>();
-	protected int capacity;
 	private static final Logger LOGGER = LogManager.getLogger(Storage.class.getName());
-
-	public Storage(int capacity) {
-		this.capacity = capacity;
-	}
-
-	public Storage() {
-		this.capacity = 100;
-	}
 
 	public void addMedia(Media media) {
 		filteredArr.add(media);

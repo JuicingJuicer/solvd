@@ -12,14 +12,6 @@ import com.solvd.ta.lab2.items.Media;
 public class Cart extends Storage implements ShoppingCart {
 	private static final Logger LOGGER = LogManager.getLogger(Cart.class.getName());
 
-	public Cart(int capacity) {
-		super(capacity);
-	}
-
-	public Cart() {
-		super();
-	}
-
 	public void addToCart(Media media) {
 		filteredArr.add(media);
 	}

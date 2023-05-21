@@ -9,7 +9,7 @@ import org.apache.logging.log4j.Logger;
 import com.solvd.ta.lab2.interfaces.CustomerService;
 
 public class Librarian implements CustomerService {
-	Scanner sc = new Scanner(System.in);
+	private Scanner sc = new Scanner(System.in);
 	private String name;
 	private static final Logger LOGGER = LogManager.getLogger(Librarian.class.getName());
 
