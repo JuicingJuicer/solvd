@@ -2,7 +2,11 @@ package com.solvd.ta.lab4;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class ConnectionPool {
+	final Logger LOGGER = LogManager.getLogger(ConnectionPool.class);
 	private CopyOnWriteArrayList<Connection> pool = new CopyOnWriteArrayList<>();
 	private CopyOnWriteArrayList<Connection> usedPool = new CopyOnWriteArrayList<>();
 
@@ -26,6 +30,7 @@ public class ConnectionPool {
 	}
 
 	public synchronized void releaseConnection(Connection c) {
+		LOGGER.info("Released");
 		usedPool.remove(c);
 		pool.add(c);
 		notify();
