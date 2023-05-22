@@ -3,8 +3,12 @@ package com.solvd.ta.lab2;
 import java.util.ArrayList;
 import java.util.EnumSet;
 
+import com.solvd.ta.lab2.enums.GameMode;
+import com.solvd.ta.lab2.enums.GameType;
 import com.solvd.ta.lab2.enums.Genre;
+import com.solvd.ta.lab2.enums.Platform;
 import com.solvd.ta.lab2.items.Book;
+import com.solvd.ta.lab2.items.Game;
 import com.solvd.ta.lab2.items.Manga;
 import com.solvd.ta.lab2.items.Media;
 import com.solvd.ta.lab2.items.Movie;
@@ -58,11 +62,32 @@ public class Populate {
 		return arr;
 	}
 
+	public static ArrayList<Media> generateGame() {
+		ArrayList<Media> arr = new ArrayList<>();
+		arr.add(new Game("The Last of Us", 2013, EnumSet.of(Genre.ACTION), "Naughty Dog", EnumSet.of(Platform.PS3),
+				EnumSet.of(GameType.ADVENTURE), EnumSet.of(GameMode.SINGLEPLAYER, GameMode.MULTIPLAYER)));
+		arr.add(new Game("God of War", 2018, EnumSet.of(Genre.ACTION), "Santa Monica Studio",
+				EnumSet.of(Platform.PS4, Platform.PC), EnumSet.of(GameType.ADVENTURE, GameType.HACKANDSLASH),
+				EnumSet.of(GameMode.SINGLEPLAYER)));
+		arr.add(new Game("Call of Duty: Black Ops II", 2012, EnumSet.of(Genre.ACTION), "Treyarch",
+				EnumSet.of(Platform.PS3, Platform.XBOX360, Platform.WIIU), EnumSet.of(GameType.FPS),
+				EnumSet.of(GameMode.SINGLEPLAYER, GameMode.MULTIPLAYER)));
+		arr.add(new Game("Grand Theft Auto IV", 2008, EnumSet.of(Genre.ACTION), "Rockstar North",
+				EnumSet.of(Platform.PS3, Platform.XBOX360, Platform.PC), EnumSet.of(GameType.ADVENTURE),
+				EnumSet.of(GameMode.SINGLEPLAYER, GameMode.MULTIPLAYER)));
+		arr.add(new Game("Valheim", 2021, EnumSet.of(Genre.ACTION), "Iron Gate Studio",
+				EnumSet.of(Platform.PC, Platform.XBOXONE, Platform.XBOXSERIESX),
+				EnumSet.of(GameType.SANDBOX, GameType.SURVIVAL),
+				EnumSet.of(GameMode.SINGLEPLAYER, GameMode.MULTIPLAYER)));
+		return arr;
+	}
+
 	public static ArrayList<Media> generateItems() {
 		ArrayList<Media> arr = new ArrayList<>();
 		arr.addAll(Populate.generateBooks());
 		arr.addAll(Populate.generateMovies());
 		arr.addAll(Populate.generateManga());
+		arr.addAll(Populate.generateGame());
 		return arr;
 	}
 }

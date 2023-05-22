@@ -141,8 +141,8 @@ public class Main {
 					librarian.salutation();
 					break;
 				default:
-					throw new OutOfRangeException("Enter a number between 1-8!");
-//					LOGGER.error("Enter a number between 1-8!");
+					throw new OutOfRangeException("Enter a number between 1-9!");
+//					LOGGER.error("Enter a number between 1-9!");
 				}
 			} while (input != 9);
 		} catch (Exception e) {
