@@ -6,6 +6,7 @@ import java.util.EnumSet;
 import com.solvd.ta.lab2.enums.GameMode;
 import com.solvd.ta.lab2.enums.GameType;
 import com.solvd.ta.lab2.enums.Genre;
+import com.solvd.ta.lab2.enums.MangaType;
 import com.solvd.ta.lab2.enums.Platform;
 import com.solvd.ta.lab2.items.Book;
 import com.solvd.ta.lab2.items.Game;
@@ -51,14 +52,15 @@ public class Populate {
 	public static ArrayList<Media> generateManga() {
 		ArrayList<Media> arr = new ArrayList<>();
 		arr.add(new Manga("Demon Slayer: Kimetsu no Yaiba", 2018, EnumSet.of(Genre.ADVENTURE), "Koyoharu Gotouge", 192,
-				"Shonen", 1, 1, 7));
-		arr.add(new Manga("Mob Psycho 100", 2018, EnumSet.of(Genre.ACTION, Genre.COMEDY), "One", 200, "Shonen", 1, 1,
-				9));
+				EnumSet.of(MangaType.SHONEN), 1, 1, 7));
+		arr.add(new Manga("Mob Psycho 100", 2018, EnumSet.of(Genre.ACTION, Genre.COMEDY), "One", 200,
+				EnumSet.of(MangaType.SHONEN), 1, 1, 9));
 		arr.add(new Manga("Vinland Saga", 2005, EnumSet.of(Genre.ACTION, Genre.ADVENTURE), "Makoto Yukimura", 220,
-				"Shonen", 1, 1, 5));
-		arr.add(new Manga("Death Note", 2005, EnumSet.of(Genre.THRILLER), "Tsugumi Ohba", 195, "Shonen", 1, 1, 7));
-		arr.add(new Manga("Fullmetal Alchemist", 2005, EnumSet.of(Genre.ADVENTURE), "Hiromu Arakawa", 192, "Shonen", 1,
-				1, 4));
+				EnumSet.of(MangaType.SHONEN), 1, 1, 5));
+		arr.add(new Manga("Death Note", 2005, EnumSet.of(Genre.THRILLER), "Tsugumi Ohba", 195,
+				EnumSet.of(MangaType.SHONEN), 1, 1, 7));
+		arr.add(new Manga("Fullmetal Alchemist", 2005, EnumSet.of(Genre.ADVENTURE), "Hiromu Arakawa", 192,
+				EnumSet.of(MangaType.SHONEN), 1, 1, 4));
 		return arr;
 	}
 

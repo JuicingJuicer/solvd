@@ -4,23 +4,24 @@ import java.util.EnumSet;
 import java.util.Objects;
 
 import com.solvd.ta.lab2.enums.Genre;
+import com.solvd.ta.lab2.enums.MangaType;
 
 public class Manga extends Book {
-	private String demographic;
+	private EnumSet<MangaType> demographic;
 	private int volume;
 	private int startChap;
 	private int endChap;
 
-	public Manga(String title, int year, EnumSet<Genre> genre, String author, int pages, String demographic, int volume,
-			int startChap, int endChap) {
+	public Manga(String title, int year, EnumSet<Genre> genre, String author, int pages, EnumSet<MangaType> demographic,
+			int volume, int startChap, int endChap) {
 		super(title, year, genre, author, pages);
-		this.setDemographic(demographic);
-		this.setVolume(volume);
-		this.setStartChap(startChap);
-		this.setEndChap(endChap);
+		this.demographic = demographic;
+		this.volume = volume;
+		this.startChap = startChap;
+		this.endChap = endChap;
 	}
 
-	public void setDemographic(String demographic) {
+	public void setDemographic(EnumSet<MangaType> demographic) {
 		this.demographic = demographic;
 	}
 
@@ -36,7 +37,7 @@ public class Manga extends Book {
 		this.endChap = endChap;
 	}
 
-	public String getDemographic() {
+	public EnumSet<MangaType> getDemographic() {
 		return demographic;
 	}
 
@@ -80,7 +81,7 @@ public class Manga extends Book {
 
 	@Override
 	public int hashCode() {
-		int hash = Objects.hash(getTitle(), author, demographic);
+		int hash = Objects.hash(getTitle(), author);
 		hash = 31 * hash + getYear();
 		hash = 31 * hash + pages;
 		hash = 31 * hash + volume;
@@ -88,6 +89,7 @@ public class Manga extends Book {
 		hash = 31 * hash + endChap;
 		hash = 31 * hash + serialNumber;
 		hash = 31 * hash + getGenre().hashCode();
+		hash = 31 * hash + demographic.hashCode();
 		return hash;
 	}
 }

@@ -23,6 +23,22 @@ public class Game extends Media {
 		this.gameMode = gameMode;
 	}
 
+	public void setStudio(String studio) {
+		this.studio = studio;
+	}
+
+	public void setPlatform(EnumSet<Platform> platform) {
+		this.platform = platform;
+	}
+
+	public void setGameType(EnumSet<GameType> gameType) {
+		this.gameType = gameType;
+	}
+
+	public void setGameMode(EnumSet<GameMode> gameMode) {
+		this.gameMode = gameMode;
+	}
+
 	public String getStudio() {
 		return studio;
 	}
