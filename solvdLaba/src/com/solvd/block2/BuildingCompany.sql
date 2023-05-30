@@ -18,6 +18,21 @@ USE `building`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `building_type`
+--
+
+DROP TABLE IF EXISTS `building_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `building_type` (
+  `building_type_id` int NOT NULL,
+  `building_name` varchar(45) NOT NULL,
+  `building_detaill` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`building_type_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `cities`
 --
 
@@ -60,7 +75,11 @@ DROP TABLE IF EXISTS `clients`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `clients` (
   `client_id` int NOT NULL,
-  `client_name` varchar(45) NOT NULL,
+  `first_name` varchar(45) NOT NULL,
+  `last_name` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `phone_number` varchar(15) NOT NULL,
+  `company_name` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`client_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -95,7 +114,7 @@ CREATE TABLE `employees` (
   `last_name` varchar(45) NOT NULL,
   `age` int NOT NULL,
   `email` varchar(45) NOT NULL,
-  `phone_number` int NOT NULL,
+  `phone_number` varchar(15) NOT NULL,
   `job_id` int NOT NULL,
   PRIMARY KEY (`emp_id`),
   KEY `fk_employee_jobs_idx` (`job_id`),
@@ -161,8 +180,7 @@ DROP TABLE IF EXISTS `packages`;
 CREATE TABLE `packages` (
   `package_id` int NOT NULL,
   `purchase_date` date NOT NULL,
-  `total_price` int NOT NULL,
-  `comments` varchar(45) DEFAULT NULL,
+  `status` enum('Invoiced','Paid','In process','Shipped','Out for delivery','Delivered') NOT NULL,
   `site_id` int NOT NULL,
   PRIMARY KEY (`package_id`),
   KEY `fk_package_site_idx` (`site_id`),
@@ -193,7 +211,8 @@ DROP TABLE IF EXISTS `projects`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `projects` (
   `project_id` int NOT NULL,
-  `building_type` int NOT NULL,
+  `project_name` varchar(45) NOT NULL,
+  `building_type` int DEFAULT NULL,
   `phase_id` int DEFAULT NULL,
   `start_date` date DEFAULT NULL,
   `end_date` date DEFAULT NULL,
@@ -203,6 +222,8 @@ CREATE TABLE `projects` (
   KEY `fk_project_phases_idx` (`phase_id`),
   KEY `fk_project_site_idx` (`site_id`),
   KEY `fk_project_team_idx` (`team_id`),
+  KEY `fk_project_btype_idx` (`building_type`),
+  CONSTRAINT `fk_project_btype` FOREIGN KEY (`building_type`) REFERENCES `building_type` (`building_type_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fk_project_phases` FOREIGN KEY (`phase_id`) REFERENCES `phases` (`phase_id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `fk_project_site` FOREIGN KEY (`site_id`) REFERENCES `site` (`site_id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `fk_project_team` FOREIGN KEY (`team_id`) REFERENCES `teams` (`team_id`)
@@ -251,6 +272,7 @@ DROP TABLE IF EXISTS `teams`;
 CREATE TABLE `teams` (
   `team_id` int NOT NULL,
   `team_name` varchar(45) NOT NULL,
+  `team_details` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`team_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -264,4 +286,4 @@ CREATE TABLE `teams` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-26  4:13:34
+-- Dump completed on 2023-05-30  6:12:03
